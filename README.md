@@ -1,6 +1,6 @@
 ### Join the community & report bugs
 
-If you wish to report an issue, please join our [Discord](https://discord.swap.defillama.com/)
+If you wish to report an issue, please join our [Discord](https://discord.gg/SoulSwap)
 
 If you want to learn about SoulSwap, read the [Twitter Thread](https://twitter.com/DefiLlama/status/1609989799653285888)
 

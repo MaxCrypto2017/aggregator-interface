@@ -727,7 +727,7 @@ export function AggregatorContainer() {
 		if (normalizedRoutes.length && normalizedRoutes[0]?.name === 'LlamaZip') {
 			if (+normalizedRoutes[0].fromAmount > 11_000 * 10 ** 18) {
 				toast({
-					title: 'Your size is size. Please use swap.defillama.com',
+					title: 'Your size is size. Please use app.soulswap.finance',
 					status: 'warning',
 					duration: 10000,
 					isClosable: true,
@@ -763,7 +763,7 @@ export function AggregatorContainer() {
 		if (isValidDegenSwap) {
 			if (+degenRoutes[0].fromAmount > 11_000 * 10 ** 18) {
 				toast({
-					title: 'Your size is size. Please use swap.defillama.com',
+					title: 'Your size is size. Please use app.soulswap.finance',
 					status: 'warning',
 					duration: 10000,
 					isClosable: true,
@@ -1004,7 +1004,7 @@ export function AggregatorContainer() {
 					{degenSizeIsSize ? (
 						<Alert status="warning" borderRadius="0.375rem" py="8px" fontSize={'16px'}>
 							<AlertIcon />
-							Your size is size. Please use swap.defillama.com
+							Your size is size. Please use app.soulswap.finance
 						</Alert>
 					) : null}
 
@@ -1141,7 +1141,7 @@ export function AggregatorContainer() {
 					{sizeIsSize ? (
 						<Alert status="warning" borderRadius="0.375rem" py="8px" fontSize={'16px'}>
 							<AlertIcon />
-							Your size is size. Please use swap.defillama.com
+							Your size is size. Please use app.soulswap.finance
 						</Alert>
 					) : null}
 
