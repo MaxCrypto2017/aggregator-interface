@@ -2,7 +2,7 @@
 
 If you wish to report an issue, please join our [Discord](https://discord.gg/SoulSwap)
 
-If you want to learn about SoulSwap, read the [Twitter Thread](https://twitter.com/DefiLlama/status/1609989799653285888)
+If you want to learn, read the [Twitter Thread](https://twitter.com/DefiLlama/status/1609989799653285888)
 
 ### Integration
 
