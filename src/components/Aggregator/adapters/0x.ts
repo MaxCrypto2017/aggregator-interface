@@ -1,7 +1,9 @@
 import BigNumber from 'bignumber.js';
 import { ethers } from 'ethers';
-import { defillamaReferrerAddress } from '../constants';
+// import { referrerAddress } from '../constants';
 import { sendTx } from '../utils/sendTx';
+
+const referrerAddress = '0xFd63Bf84471Bc55DD9A83fdFA293CCBD27e1F4C8';
 
 export const chainToId = {
 	ethereum: 'https://api.0x.org/',
@@ -38,7 +40,7 @@ export async function getQuote(chain: string, from: string, to: string, amount: 
 	const data = await fetch(
 		`${chainToId[chain]}swap/v1/quote?buyToken=${tokenTo}&${amountParam}&sellToken=${tokenFrom}&slippagePercentage=${
 			extra.slippage / 100
-		}&affiliateAddress=${defillamaReferrerAddress}&enableSlippageProtection=false&intentOnFilling=true&takerAddress=${
+		}&affiliateAddress=${referrerAddress}&enableSlippageProtection=false&intentOnFilling=true&takerAddress=${
 			extra.userAddress
 		}&skipValidation=true&feeRecipientTradeSurplus=${feeCollectorAddress}`,
 		{

@@ -27,7 +27,7 @@ import {
 	PopoverContent
 } from '@chakra-ui/react';
 import ReactSelect from '~/components/MultiSelect';
-import FAQs from '~/components/FAQs';
+// import FAQs from '~/components/FAQs';
 import SwapRoute, { LoadingRoute } from '~/components/SwapRoute';
 import { adaptersNames, getAllChains, swap } from './router';
 import { inifiniteApprovalAllowed } from './list';
@@ -206,7 +206,7 @@ const Routes = styled.div<{ visible: boolean }>`
 	@media screen and (max-width: ${({ theme }) => theme.bpMed}) {
 		z-index: 10;
 		background-color: #22242a;
-		position: absolute;
+		position: flex;
 		box-shadow: none;
 		clip-path: ${({ visible }) => (visible ? 'inset(0 0 0 0);' : 'inset(0 0 0 100%);')};
 
@@ -891,7 +891,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 		aggregator === 'CowSwap' ? (
 			<>
 				{finalSelectedFromToken.value === ethers.constants.AddressZero && Number(slippage) < 2 ? (
-					<Alert status="warning" borderRadius="0.375rem" py="8px" key="cow1">
+			<Alert status="warning" borderRadius="0.375rem" py="8px" key="cow1">
 						<AlertIcon />
 						Swaps from {finalSelectedFromToken.symbol} on CowSwap need to have slippage higher than 2%.
 					</Alert>
@@ -939,17 +939,17 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 				/>
 			) : null}
 
-			<Text fontSize="1rem" fontWeight="500" display={{ base: 'none', md: 'block', lg: 'block' }}>
+			{/* <Text fontSize="1rem" fontWeight="500" display={{ base: 'none', md: 'block', lg: 'block' }}>
 				This product is still in beta. If you run into any issue please let us know in our{' '}
 				<a
 					style={{ textDecoration: 'underline' }}
 					target={'_blank'}
 					rel="noreferrer noopener"
-					href="https://discord.swap.defillama.com/"
+					href="https://discord.gg/SoulSwap"
 				>
 					discord server
 				</a>
-			</Text>
+			</Text> */}
 
 			<BodyWrapper>
 				<Body>
@@ -958,7 +958,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 							<Flex>
 								<Box>Chain</Box>
 								<Spacer />
-								<Tooltip content="Redirect requests through the DefiLlama Server to hide your IP address">
+								<Tooltip content="Redirect requests through the SoulSwap Server to hide your IP address">
 									<FormControl display="flex" alignItems="baseline" gap="6px" justifyContent={'center'}>
 										<FormLabel htmlFor="privacy-switch" margin={0} fontSize="14px" color="gray.400">
 											Hide IP
@@ -985,7 +985,6 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 
 						<ReactSelect options={chains} value={selectedChain} onChange={onChainChange} />
 					</div>
-
 					<Flex flexDir="column" gap="4px" pos="relative">
 						<InputAmountAndTokenSelect
 							placeholder={normalizedRoutes[0]?.amountIn}
@@ -1209,11 +1208,10 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 								)}
 							</>
 						)}
-					</SwapWrapper>
-				</Body>
-
-				<Routes ref={routesRef} visible={uiState === STATES.ROUTES}>
-					<ArrowBackIcon
+					<Routes ref={routesRef} visible={true
+						// uiState === STATES.ROUTES
+						}>
+					{/* <ArrowBackIcon
 						width={'24px'}
 						height="24px"
 						position={'absolute'}
@@ -1221,10 +1219,10 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 						onClick={() => setUiState(STATES.INPUT)}
 						display={['flex', 'flex', 'none', 'none']}
 						cursor="pointer"
-					/>
+					/> */}
 					{normalizedRoutes?.length ? (
 						<Flex alignItems="center" justifyContent="space-between">
-							<FormHeader> Select a route to perform a swap </FormHeader>
+							<FormHeader> Choose Route </FormHeader>
 							<Tooltip2
 								content={`Displayed data will auto-refresh after ${secondsToRefresh} seconds. Click here to update manually`}
 							>
@@ -1438,9 +1436,11 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 						  ))
 						: null}
 				</Routes>
+				</SwapWrapper>
+				</Body>				
 			</BodyWrapper>
 
-			{window === parent ? <FAQs /> : null}
+			{/* {window === parent ? <FAQs /> : null} */}
 
 			<TransactionModal open={txModalOpen} setOpen={setTxModalOpen} link={txUrl} />
 		</Wrapper>

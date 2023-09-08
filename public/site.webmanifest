@@ -1,9 +1,9 @@
 {
-	"name": "LlamaSwap",
-	"short_name": "LlamaSwap",
+	"name": "SoulSwap",
+	"short_name": "SoulSwap",
 	"icons": [
 		{
-			"src": "/android-chrome-512x512.png",
+			"src": "/favicon.png",
 			"sizes": "512x512",
 			"type": "image/png"
 		}

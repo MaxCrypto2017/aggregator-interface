@@ -26,21 +26,21 @@ export default function FaqWrapper() {
 					<h2>
 						<AccordionButton>
 							<Box flex="1" textAlign="left">
-								Does DefiLlama take any fees?
+								Does SoulSwap take any fees?
 							</Box>
 							<AccordionIcon />
 						</AccordionButton>
 					</h2>
 					<AccordionPanel pb={4}>
-						DefiLlama takes 0 fee on swaps.
+						SoulSwap takes 0 fee on swaps.
 						<br />
-						<br /> You'll get the exact same price swapping through DefiLlama as what you'd get swapping through the
+						<br /> You'll get the exact same price swapping through SoulSwap as what you'd get swapping through the
 						chosen aggregator directly.
 						<br />
 						<br />
 						We do add our referral code to swaps tho, so, for aggregators with revenue sharing, they will send us part
 						of the fee they earn. This is not an extra fee, you'd be charged the same fee anyway, but now a small part
-						of it is shared with DefiLlama. We also integrate aggregators with no fee sharing the best price, and in
+						of it is shared with SoulSwap. We also integrate aggregators with no fee sharing the best price, and in
 						those cases we don't make any money.
 					</AccordionPanel>
 				</AccordionItem>
@@ -80,14 +80,14 @@ export default function FaqWrapper() {
 					<h2>
 						<AccordionButton>
 							<Box flex="1" textAlign="left">
-								Will I be eligible for aggregator airdrops if I swap through DefiLlama?
+								Will I be eligible for aggregator airdrops if I swap through SoulSwap?
 							</Box>
 							<AccordionIcon />
 						</AccordionButton>
 					</h2>
 					<AccordionPanel pb={4}>
 						We execute swaps directly against the router of each aggregator, so there's no difference between a swap
-						executed directly from their UI and a swap executed from DefiLlama.
+						executed directly from their UI and a swap executed from SoulSwap.
 						<br />
 						<br />
 						Thus, if any of the aggregators we integrate does an airdrop in the future, all swaps made through them

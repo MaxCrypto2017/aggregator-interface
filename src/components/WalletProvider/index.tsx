@@ -25,7 +25,7 @@ const Provider = styled.div`
 `;
 
 const { connectors } = getDefaultWallets({
-	appName: 'DefiLlama',
+	appName: 'SoulSwap',
 	chains,
 	projectId: 'b3d4ba9fb97949ab12267b470a6f31d2'
 });

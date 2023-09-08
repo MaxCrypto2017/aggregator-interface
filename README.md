@@ -2,7 +2,7 @@
 
 If you wish to report an issue, please join our [Discord](https://discord.swap.defillama.com/)
 
-If you want to learn about LlamaSwap, read the [Twitter Thread](https://twitter.com/DefiLlama/status/1609989799653285888)
+If you want to learn about SoulSwap, read the [Twitter Thread](https://twitter.com/DefiLlama/status/1609989799653285888)
 
 ### Integration
 
@@ -10,9 +10,9 @@ The best way to integrate is through an iframe of our page, like this:
 
 ```html
 <iframe
-	title="LlamaSwap Widget"
-	name="LlamaSwap Widget"
-	src="https://swap.defillama.com?chain=ethereum"
+	title="SoulSwap Widget"
+	name="SoulSwap Widget"
+	src="llamaswap-interface.vercel.app?chain=ethereum"
 	width="450px"
 	height="565px"
 	allow="fullscreen"
@@ -31,7 +31,7 @@ The widget is responsive, so you can change the width and height in any way you 
 - to: token to buy, to use the gas token for the chain use 0x0000000000000000000000000000000000000000 (eg `to=0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48`)
 - background: color of the background (eg `background=rgb(10,20,30)`)
 
-Note: only tokens that are part of our token lists are accepted in `from` and `to`, this is to prevent scammers linking to llamaswap with fake tokens loaded (eg a fake USDC)
+Note: only tokens that are part of our token lists are accepted in `from` and `to`, this is to prevent scammers linking to soulswap with fake tokens loaded (eg a fake USDC)
 
 #### API integration
 

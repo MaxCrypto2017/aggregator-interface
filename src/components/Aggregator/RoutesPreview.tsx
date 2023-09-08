@@ -1,7 +1,8 @@
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { Box, Flex, Heading, Link, Text } from '@chakra-ui/react';
 import styled from 'styled-components';
-import { AggIcons, LlamaIcon, SmolCheck } from '../Icons';
+import { AggIcons, SmolCheck } from '../Icons';
+import Image from 'next/image'
 
 const IconsBody = styled.div`
 	display: flex;
@@ -63,11 +64,18 @@ const RoutesPreview = () => {
 	return (
 		<Flex pt="30px" flexDir="column" justifyContent="space-around" h="100%">
 			<Header>
-				<MainIcon>{LlamaIcon}</MainIcon>
-
+				{/* <MainIcon>{LlamaIcon}</MainIcon> */}
+				<MainIcon> 
+					<Image
+					height={72}
+					width={72}
+					alt={'Soul Logo'}
+					src={'https://soulswap.finance/favicon.png'}
+				/>
+				</MainIcon>
 				<IconsBody>
 					{[...AggIcons, ...AggIcons].map((Icon, i) => (
-						<IconElem key={i}>{Icon}</IconElem>
+<IconElem key={i}>{Icon}</IconElem>
 					))}
 				</IconsBody>
 			</Header>
@@ -82,13 +90,8 @@ const RoutesPreview = () => {
 				</CheckBody>
 
 				<Text color={'gray.300'} textAlign="center" mt={6}>
-					LlamaSwap looks for the best route for your trade <br /> among a variety of Dex Aggregators, guaranteeing you{' '}
+					SoulSwap looks for the best route for your trade <br /> among a variety of Dex Aggregators, guaranteeing you{' '}
 					<br /> the best execution prices in DeFi.
-					<br /> <br /> Try it now or{' '}
-					<Link href="https://twitter.com/defillama/status/1609989799653285888" isExternal textDecoration={'underline'}>
-						learn more
-						<ExternalLinkIcon mx="4px" mb="3px" />
-					</Link>
 				</Text>
 			</Box>
 		</Flex>

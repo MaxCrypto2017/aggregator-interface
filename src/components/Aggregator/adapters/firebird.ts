@@ -1,10 +1,12 @@
 import BigNumber from 'bignumber.js';
 import { ethers } from 'ethers';
-import { chainsMap, defillamaReferrerAddress } from '../constants';
+import { chainsMap } from '../constants';
 import { ExtraData } from '../types';
 import { providers } from '../rpcs';
 import { applyArbitrumFees } from '../utils/arbitrumFees';
 import { sendTx } from '../utils/sendTx';
+
+const referrerAddress = '0xFd63Bf84471Bc55DD9A83fdFA293CCBD27e1F4C8';
 
 export const chainToId = {
 	ethereum: chainsMap.ethereum,
@@ -54,7 +56,7 @@ export async function getQuote(chain: string, from: string, to: string, amount: 
 	const isFromNative = from === ethers.constants.AddressZero;
 	const tokenFrom = isFromNative ? nativeToken : from;
 	const tokenTo = to === ethers.constants.AddressZero ? nativeToken : to;
-	const receiver = extra.userAddress || defillamaReferrerAddress;
+	const receiver = extra.userAddress || referrerAddress;
 
 	// amount should include decimals
 	const result = await fetch(
@@ -62,7 +64,7 @@ export async function getQuote(chain: string, from: string, to: string, amount: 
 			chainToId[chain]
 		}&from=${tokenFrom}&to=${tokenTo}&amount=${amount}&receiver=${receiver}&slippage=${
 			+extra.slippage / 100
-		}&source=defillama&ref=${defillamaReferrerAddress}`,
+		}&source=defillama&ref=${referrerAddress}`,
 		{ headers }
 	).then((r) => r.json());
 	const data = result.quoteData;

@@ -5,7 +5,7 @@ import { ethers } from 'ethers';
 import { nativeTokens } from '~/components/Aggregator/nativeTokens';
 import {
 	chainIdToName,
-	dexToolsChainMap,
+	// dexToolsChainMap,
 	geckoChainsMap,
 	geckoTerminalChainMap
 } from '~/components/Aggregator/constants';
@@ -54,14 +54,15 @@ const fixTotkens = (tokenlist) => {
 };
 
 const markMultichain = async (tokens) => {
-	const multichainList = await fetch(`https://bridgeapi.multichain.org/v4/tokenlistv4/${FANTOM_ID}`)
+	// const multichainList = await fetch(`https://bridgeapi.multichain.org/v4/tokenlistv4/${FANTOM_ID}`)
+	const multichainList = await fetch(`https://raw.githubusercontent.com/SoulSwapFinance/default-token-list/prod/multichain.json`)
 		.then((r) => r.json())
 		.then((r) => Object.values(r));
 
-	tokens[FANTOM_ID] = tokens[FANTOM_ID].map((token) => {
-		const isMultichain = !!multichainList.find(
-			(multitoken: IToken) => multitoken.address?.toLowerCase() === token.address.toLowerCase()
-		);
+		tokens[FANTOM_ID] = tokens[FANTOM_ID].map((token) => {
+			const isMultichain = !!multichainList.find(
+				(multitoken: IToken) => multitoken.address?.toLowerCase() === token.address.toLowerCase()
+			);
 
 		return {
 			...token,
@@ -85,7 +86,7 @@ export async function getTokenList() {
 	// const hecoList = await fetch('https://token-list.sushi.com/').then((r) => r.json()); // same as sushi
 	// const lifiList = await fetch('https://li.quest/v1/tokens').then((r) => r.json());
 
-	const [sushiList, geckoList, logos, ownList, zksyncList, quickSwapList, lineaList] = await Promise.all([
+	const [sushiList, geckoList, logos, soulSwapFantomList, soulSwapAvalancheList, ownList, zksyncList, quickSwapList, lineaList] = await Promise.all([
 		fetch('https://tokens.sushi.com/v0')
 			.then((r) => r.json())
 			.then((r) =>
@@ -94,8 +95,15 @@ export async function getTokenList() {
 					logoURI: `https://cdn.sushi.com/image/upload/f_auto,c_limit,w_40,q_auto/tokens/${token.chainId}/${token.address}.jpg`
 				}))
 			),
-		fetch('https://defillama-datasets.llama.fi/tokenlist/all.json').then((res) => res.json()),
+		fetch('https://raw.githubusercontent.com/SoulSwapFinance/default-token-list/prod/all.json').then((res) => res.json()),
+		// fetch('https://defillama-datasets.llama.fi/tokenlist/all.json').then((res) => res.json()),
 		fetch('https://defillama-datasets.llama.fi/tokenlist/logos.json').then((res) => res.json()),
+		fetch('https://raw.githubusercontent.com/SoulSwapFinance/default-token-list/prod/fantom.json')
+			.then((res) => res.json())
+			.then((r) => r.filter((t) => t.chainId === 250)),
+		fetch('https://raw.githubusercontent.com/SoulSwapFinance/default-token-list/prod/avalanche.json')
+			.then((res) => res.json())
+			.then((r) => r.filter((t) => t.chainId === 43114)),
 		fetch('https://raw.githubusercontent.com/0xngmi/tokenlists/master/canto.json')
 			.then((res) => res.json())
 			.then((r) => r.filter((t) => t.chainId === 7700)),
@@ -123,6 +131,8 @@ export async function getTokenList() {
 		groupBy(
 			[
 				...nativeTokens,
+				...soulSwapFantomList,
+				...soulSwapAvalancheList,
 				...ownTokenList,
 				...oneInchList,
 				...sushiList,

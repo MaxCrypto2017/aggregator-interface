@@ -4,8 +4,9 @@ import BigNumber from 'bignumber.js';
 import { ethers } from 'ethers';
 import { applyArbitrumFees } from '../utils/arbitrumFees';
 import { sendTx } from '../utils/sendTx';
-import { defillamaReferrerAddress } from '../constants';
+// import { referrerAddress } from '../constants';
 
+const referrerAddress = '0xFd63Bf84471Bc55DD9A83fdFA293CCBD27e1F4C8';
 // api docs have an outdated chain list, need to check https://app.paraswap.io/# to find supported networks
 export const chainToId = {
 	ethereum: 1,
@@ -19,7 +20,8 @@ export const chainToId = {
 
 export const name = 'ParaSwap';
 export const token = 'PSP';
-export const partner = 'llamaswap';
+// export const partner = 'llamaswap';
+export const partner = 'soulswap';
 export const isOutputAvailable = true;
 
 export function approvalAddress() {
@@ -56,7 +58,7 @@ export async function getQuote(
 						slippage: slippage * 100,
 						userAddress: userAddress,
 						partner: partner,
-						partnerAddress: defillamaReferrerAddress,
+						partnerAddress: referrerAddress,
 						positiveSlippageToUser: false,
 						priceRoute: data.priceRoute,
 						...(side === 'BUY' ? { destAmount: data.priceRoute.destAmount } : { srcAmount: data.priceRoute.srcAmount })

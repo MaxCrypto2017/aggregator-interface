@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
-import gib from '~/public/gib.png';
-import gibr from '~/public/gibr.png';
+import gib from '~/public/favicon.png';
+import gibr from '~/public/favicon.png';
 import { useMutation } from '@tanstack/react-query';
 import {
 	useAccount,
@@ -871,7 +871,6 @@ export function AggregatorContainer() {
 	return (
 		<Wrapper>
 			<Heading>Arbitrum Airdrop X DefiLlama</Heading>
-
 			<Text color={'orange.400'} fontSize="16px" mb={'8px'}>
 				To get your txs accepted you need to increase priority fee and max fee in metamask.
 			</Text>
@@ -912,7 +911,6 @@ export function AggregatorContainer() {
 								</Button>
 							</>
 						) : null}
-
 						<Flex
 							flexDir={{ base: 'column', md: 'row' }}
 							alignItems="center"
@@ -980,7 +978,6 @@ export function AggregatorContainer() {
 						<Text fontWeight={'bold'} fontSize={'20px'} textAlign={'center'}>
 							Step 2.
 						</Text>
-
 						<VStack justifyContent={'center'}>
 							{Number.isFinite(arbPriceUsd) ? (
 								<Text fontWeight={'bold'} fontSize="16">
@@ -1058,7 +1055,6 @@ export function AggregatorContainer() {
 								</Button>
 							}
 						/>
-
 						<IconButton
 							onClick={() =>
 								setTokens((tokens) => ({

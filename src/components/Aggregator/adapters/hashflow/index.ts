@@ -38,7 +38,8 @@ export async function getQuote(chain: string, from: string, to: string, amount: 
 		method: 'POST',
 		body: JSON.stringify({
 			networkId: chainToId[chain],
-			source: 'defillama',
+			// source: 'defillama',
+			source: 'soulswap',
 			rfqType: 0,
 			baseToken: from,
 			quoteToken: to,
