@@ -1,4 +1,4 @@
-import { BigNumber, ethers } from 'ethers';
+import { BigNumber, ethers } from 'ethers/lib';
 import { providers } from '../../rpcs';
 import { sendTx } from '../../utils/sendTx';
 import { encode } from './encode';

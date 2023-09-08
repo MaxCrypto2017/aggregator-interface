@@ -4,7 +4,7 @@ import { ExtraData } from '../../types';
 import { domain, SigningScheme, signOrder, OrderKind } from '@gnosis.pm/gp-v2-contracts';
 import GPv2SettlementArtefact from '@gnosis.pm/gp-v2-contracts/deployments/mainnet/GPv2Settlement.json';
 
-import { ethers } from 'ethers';
+import { ethers } from 'ethers/lib';
 import { ABI } from './abi';
 import BigNumber from 'bignumber.js';
 import { chainsMap } from '../../constants';

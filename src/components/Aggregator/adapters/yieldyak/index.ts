@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js';
-import { ethers } from 'ethers';
+import { ethers } from 'ethers/lib';
 import { providers } from '../../rpcs';
 import { sendTx } from '../../utils/sendTx';
 import { ABI } from './abi';

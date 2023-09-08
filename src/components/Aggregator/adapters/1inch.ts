@@ -1,6 +1,6 @@
 // Source https://docs.1inch.io/docs/aggregation-protocol/api/swagger
 
-import { ethers } from 'ethers';
+import { ethers } from 'ethers/lib';
 import { applyArbitrumFees } from '../utils/arbitrumFees';
 import { altReferralAddress } from '../constants';
 import { sendTx } from '../utils/sendTx';

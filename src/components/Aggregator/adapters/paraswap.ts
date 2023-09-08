@@ -1,7 +1,7 @@
 // Source: https://developers.paraswap.network/api/master
 
 import BigNumber from 'bignumber.js';
-import { ethers } from 'ethers';
+import { ethers } from 'ethers/lib';
 import { applyArbitrumFees } from '../utils/arbitrumFees';
 import { sendTx } from '../utils/sendTx';
 // import { referrerAddress } from '../constants';

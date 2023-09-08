@@ -1,5 +1,5 @@
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
-import { ethers } from 'ethers';
+import { ethers } from 'ethers/lib';
 import { getAddress } from 'ethers/lib/utils';
 import { erc20ABI, useAccount, useBalance as useWagmiBalance } from 'wagmi';
 import { nativeAddress } from '~/components/Aggregator/constants';

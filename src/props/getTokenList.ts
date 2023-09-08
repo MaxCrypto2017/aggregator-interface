@@ -1,7 +1,7 @@
 import { groupBy, mapValues, uniqBy } from 'lodash';
 import { IToken } from '~/types';
 import { multiCall } from '@defillama/sdk/build/abi';
-import { ethers } from 'ethers';
+import { ethers } from 'ethers/lib';
 import { nativeTokens } from '~/components/Aggregator/nativeTokens';
 import {
 	chainIdToName,

@@ -1,4 +1,4 @@
-import { BigNumber, ethers } from 'ethers';
+import { BigNumber, ethers } from 'ethers/lib';
 import { useState } from 'react';
 import { erc20ABI, useAccount, useContractRead, useContractWrite, useNetwork, usePrepareContractWrite } from 'wagmi';
 import { nativeAddress } from '../constants';

@@ -1,4 +1,4 @@
-import { ethers } from 'ethers';
+import { ethers } from 'ethers/lib';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useAccount, useNetwork } from 'wagmi';

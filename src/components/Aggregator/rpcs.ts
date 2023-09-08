@@ -1,4 +1,4 @@
-import { ethers } from 'ethers';
+import { ethers } from 'ethers/lib';
 import { mapKeys, mapValues, uniq } from 'lodash';
 
 function createProvider(name: string, defaultRpc: string, chainId: number, random = false) {

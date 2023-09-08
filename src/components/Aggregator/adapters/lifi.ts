@@ -1,7 +1,7 @@
 // Source https://docs.1inch.io/docs/aggregation-protocol/api/swagger
 
 import BigNumber from 'bignumber.js';
-import { ethers } from 'ethers';
+import { ethers } from 'ethers/lib';
 import { ExtraData } from '../types';
 
 export const chainToId = {

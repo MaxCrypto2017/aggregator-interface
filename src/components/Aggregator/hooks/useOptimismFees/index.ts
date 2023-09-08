@@ -1,4 +1,4 @@
-import { ethers } from 'ethers';
+import { ethers } from 'ethers/lib';
 import { useContractRead, useNetwork } from 'wagmi';
 import { providers } from '../../rpcs';
 import { FEE_ABI } from './abi';

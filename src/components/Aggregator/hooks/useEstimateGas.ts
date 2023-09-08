@@ -1,6 +1,6 @@
 import { useQueries, UseQueryOptions } from '@tanstack/react-query';
 import BigNumber from 'bignumber.js';
-import { ethers } from 'ethers';
+import { ethers } from 'ethers/lib';
 import { last } from 'lodash';
 import { erc20ABI } from 'wagmi';
 import { IRoute } from '~/queries/useGetRoutes';

@@ -1,4 +1,4 @@
-import { ethers } from 'ethers';
+import { ethers } from 'ethers/lib';
 
 export function getTopRoute({ routes, gasPriceData, gasTokenPrice, fromToken, toToken, toTokenPrice }) {
 	const sortedRoutes = routes

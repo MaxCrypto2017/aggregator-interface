@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js';
-import { ethers } from 'ethers';
+import { ethers } from 'ethers/lib';
 import { applyArbitrumFees } from '../utils/arbitrumFees';
 import { ExtraData } from '../types';
 import { sendTx } from '../utils/sendTx';

@@ -1,6 +1,6 @@
-import { ethers } from 'ethers';
+// import { ethers } from 'ethers/lib';
 import { useMemo, useRef, useState } from 'react';
-import { useVirtualizer } from '@tanstack/react-virtual';
+import { useVirtual } from '@tanstack/react-virtual';
 import { Modal, ModalOverlay, ModalContent, ModalCloseButton, useDisclosure, Input } from '@chakra-ui/react';
 import { WarningTwoIcon } from '@chakra-ui/icons';
 import { Header, IconImage, PairRow } from '../Aggregator/Search';
@@ -12,6 +12,7 @@ import Image from 'next/image';
 import coingecko from '~/public/coingecko.svg';
 import { allChains } from '../WalletProvider/chains';
 import { ChevronDown } from 'react-feather';
+import { ethers } from 'ethers/lib';
 
 const Row = ({ chain, token, onClick }) => {
 	const blockExplorer = allChains.find((c) => c.id == chain.id)?.blockExplorers?.default;
@@ -54,7 +55,13 @@ const Row = ({ chain, token, onClick }) => {
 							fontSize="0.75rem"
 						>
 							<span>via CoinGecko</span>
-							<Image src={coingecko} height="14px" width="14px" objectFit="contain" alt="" unoptimized />
+							<Image src={coingecko} 
+								height={14} 
+								width={14} 
+								objectFit="contain" 
+								alt="" 
+								unoptimized 
+							/>
 						</Text>
 						{blockExplorer && (
 							<a
@@ -201,9 +208,10 @@ const SelectModal = ({ isOpen, onClose, data, onClick, selectedChain }) => {
 
 	const parentRef = useRef();
 
-	const rowVirtualizer = useVirtualizer({
-		count: filteredData.length,
-		getScrollElement: () => parentRef.current,
+	const rowVirtualizer = useVirtual({
+		size: filteredData.length,
+		// getScrollElement: () => parentRef.current,
+		parentRef: parentRef.current,
 		estimateSize: (index) => (filteredData[index].isGeckoToken ? 72 : 40),
 		overscan: 10
 	});
@@ -253,12 +261,12 @@ const SelectModal = ({ isOpen, onClose, data, onClick, selectedChain }) => {
 				>
 					<div
 						style={{
-							height: `${rowVirtualizer.getTotalSize()}px`,
+							height: `${rowVirtualizer.totalSize}px`,
 							width: '100%',
 							position: 'relative'
 						}}
 					>
-						{rowVirtualizer.getVirtualItems().map((virtualRow) => (
+						{rowVirtualizer.virtualItems.map((virtualRow) => (
 							<div
 								key={virtualRow.index + filteredData[virtualRow.index].address}
 								style={{

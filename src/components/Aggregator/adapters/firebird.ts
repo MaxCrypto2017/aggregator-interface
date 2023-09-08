@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js';
-import { ethers } from 'ethers';
+import { ethers } from 'ethers/lib';
 import { chainsMap } from '../constants';
 import { ExtraData } from '../types';
 import { providers } from '../rpcs';

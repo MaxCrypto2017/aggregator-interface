@@ -1,4 +1,4 @@
-import { BigNumber } from 'ethers';
+import { BigNumber } from 'ethers/lib';
 
 export const tokens = {
 	optimism: {

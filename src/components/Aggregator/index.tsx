@@ -2,7 +2,7 @@ import { useMemo, useRef, useState, Fragment, useEffect } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useAccount, useFeeData, useNetwork, useQueryClient, useSigner, useSwitchNetwork, useToken } from 'wagmi';
 import { useAddRecentTransaction, useConnectModal } from '@rainbow-me/rainbowkit';
-import { ethers } from 'ethers';
+import { ethers } from 'ethers/lib';
 import BigNumber from 'bignumber.js';
 import { ArrowDown } from 'react-feather';
 import styled from 'styled-components';

@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js';
-import { ethers } from 'ethers';
+import { ethers } from 'ethers/lib';
 import { ABI } from './abi';
 
 // All info collected from reverse engineering https://app.odos.xyz/

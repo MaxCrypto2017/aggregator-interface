@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js';
-import { Contract, ethers } from 'ethers';
+import { Contract, ethers } from 'ethers/lib';
 import { providers } from '../../rpcs';
 import { applyArbitrumFees } from '../../utils/arbitrumFees';
 import { sendTx } from '../../utils/sendTx';

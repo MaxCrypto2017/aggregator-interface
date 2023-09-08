@@ -1,4 +1,4 @@
-import { ethers } from 'ethers';
+import { ethers } from 'ethers/lib';
 import { providers } from '../rpcs';
 
 // https://about.airswap.io/technology/protocols

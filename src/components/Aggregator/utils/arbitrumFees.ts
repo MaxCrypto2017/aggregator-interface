@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js';
-import { ethers } from 'ethers';
+import { ethers } from 'ethers/lib';
 import { providers } from '../rpcs';
 
 export async function applyArbitrumFees(to: string, data: string, gas: string) {

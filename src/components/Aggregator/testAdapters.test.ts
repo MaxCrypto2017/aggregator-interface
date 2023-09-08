@@ -1,7 +1,7 @@
 import { chainsMap } from './constants';
 import { getAllChains } from './router';
 import { adapters } from './list';
-import { BigNumber, ethers } from 'ethers';
+import { BigNumber, ethers } from 'ethers/lib';
 import { redirectQuoteReq } from './adapters/utils';
 import { nativeTokens } from './nativeTokens';
 import { getTokenList } from '~/props/getTokenList';
