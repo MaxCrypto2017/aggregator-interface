@@ -31,7 +31,7 @@ function useCountdownFull(msTillTraget) {
 
 			return () => clearInterval(interval);
 		}
-	}, [msTillTraget]);
+	}, [isStarted, msTillTraget]);
 
 	const start = () => setStarted(true);
 

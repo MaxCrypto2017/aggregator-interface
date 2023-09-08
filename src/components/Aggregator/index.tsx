@@ -641,7 +641,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 		if (isUnknown && toTokenAddress && savedTokens?.length > 1) {
 			onToTokenChange(undefined);
 		}
-	}, [router?.query, savedTokens]);
+	}, [router?.query, savedTokens, finalSelectedToToken, selectedToToken, toTokenAddress]);
 
 	useEffect(() => {
 		if (selectedRoute) {
@@ -657,7 +657,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 				amount: selectedRoute.amount
 			});
 		}
-	}, [selectedRoute?.amount, aggregator]);
+	}, [selectedRoute?.amount, aggregator, lastOutputValue]);
 
 	const priceImpactRoute = selectedRoute ? fillRoute(selectedRoute) : null;
 
