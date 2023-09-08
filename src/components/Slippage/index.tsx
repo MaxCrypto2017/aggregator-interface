@@ -53,16 +53,17 @@ export function Slippage({ slippage, setSlippage, fromToken, toToken }) {
 	return (
 		<Box display="flex" flexDir="column" marginX="4px">
 			<Box display={['none', 'none', 'block', 'block']}>{warnings}</Box>
-			<Text fontWeight="400" display="flex" justifyContent="space-between" alignItems="center" fontSize="0.875rem">
+			{/* <Text fontWeight="400" display="flex" justifyContent="space-between" alignItems="center" fontSize="0.875rem">
 				Swap Slippage: {slippage && !Number.isNaN(Number(slippage)) ? Number(slippage) + '%' : ''}
-			</Text>
+			</Text> */}
 			<Box display="flex" gap="6px" flexWrap="wrap" width="100%">
 				{['0.1', '0.5', '1'].map((slippage) => (
 					<Button
 						fontSize="0.875rem"
 						fontWeight="500"
 						p="8px"
-						bg="#38393e"
+						// purple
+						bg="#A171FB"
 						height="2rem"
 						onClick={() => {
 							setSlippage(slippage);
@@ -77,7 +78,7 @@ export function Slippage({ slippage, setSlippage, fromToken, toToken }) {
 						value={slippage}
 						type="text"
 						style={{
-							width: '100px',
+							width: '64px',
 							height: '2rem',
 							padding: '4px 6px',
 							background: 'rgba(0,0,0,.4)',
@@ -92,14 +93,17 @@ export function Slippage({ slippage, setSlippage, fromToken, toToken }) {
 							setSlippage(val.target.value.replace(/[^0-9.,]/g, '')?.replace(/,/g, '.'));
 						}}
 					/>
-					<Text pos="absolute" top="6px" right="6px" fontSize="0.875rem" zIndex={1}>
+					<Text pos="absolute" top="6px" right="8px" fontSize="0.875rem" zIndex={1}>
 						%
 					</Text>
+					<Text pos="absolute" top="6px" left="72px" fontSize="0.875rem" zIndex={1}>
+					Slippage
+					</Text> 
 				</Box>
 				{warnings.length ? (
 					<Popover>
 						<PopoverTrigger>
-							<WarningIcon color={'rgb(224, 148, 17)'} height="20px" width="20px" mt="6px" />
+							<WarningIcon color={'rgb(224, 148, 17)'} height="20px" width="20px" ml="48pt" mt="6px" />
 						</PopoverTrigger>
 						<PopoverContent>{warnings}</PopoverContent>
 					</Popover>

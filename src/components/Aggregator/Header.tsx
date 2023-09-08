@@ -1,6 +1,6 @@
 import { Heading, Image } from '@chakra-ui/react';
 import styled from 'styled-components';
-import loaderImg from '~/public/loader.png';
+import loaderImg from '~/public/title-logo-words.png';
 
 const Wrapper = styled.div`
 	position: absolute;
@@ -25,7 +25,12 @@ const Name = styled(Heading)`
 
 const Header = ({ children }) => {
 	return (
-		<Wrapper>
+		<Wrapper
+			style={{
+				display: 'flex',
+				justifyContent: 'center',
+			}}
+		>
 			<Name
 				fontSize={['26px', '26px', '32px', '32px']}
 				display="flex"
@@ -35,12 +40,12 @@ const Header = ({ children }) => {
 			>
 				<Image
 					src={loaderImg.src}
-					w={['28px', '28px', '36px', '36px']}
-					h={['28px', '28px', '36px', '36px']}
+					w={['264px', '264px', '264px', '264px']}
+					h={['48px', '48px', '48px', '48px']}
 					mr="8px"
 					alt="logo"
 				/>
-				{'SoulSwap'}
+				{/* {'SoulSwap'} */}
 			</Name>
 			{children}
 		</Wrapper>

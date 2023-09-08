@@ -95,21 +95,32 @@ function HistoryModal({ tokensUrlMap, tokensSymbolsMap }) {
 	});
 	return (
 		<>
-			<Button
+			<button
 				onClick={onOpen}
-				borderRadius="12px"
-				height="36px"
-				mt="2px"
-				colorScheme={'twitter'}
-				display={{ base: 'none', sm: 'none', lg: 'block', md: 'block' }}
+				style={{
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
+					height: "40px",
+					width: "96px",
+					border: "2px solid",
+					borderRadius: "8px",
+					marginBottom: '20px',
+					backgroundColor: "#a171fb"
+				}}
+				// borderRadius="12px"
+				// height="36px"
+				// mt="2px"
+				// colorScheme={'twitter'}
+				// display={{ base: 'none', sm: 'none', lg: 'block', md: 'block' }}
 			>
 				History
-			</Button>
+			</button>
 
 			<Modal isOpen={isOpen} onClose={onClose} size="lg">
 				<ModalOverlay />
 				<ModalContent backgroundColor={'#22242A'} color="white">
-					<ModalHeader>Swaps History</ModalHeader>
+					<ModalHeader>Swap History</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
 						{isLoading && user?.address ? (

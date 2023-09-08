@@ -67,7 +67,7 @@ export const Settings = ({ adapters, disabledAdapters, setDisabledAdapters, onCl
 					</ModalBody>
 
 					<ModalFooter>
-						<Button colorScheme="blue" mr={3} onClick={onCloseClick}>
+						<Button colorScheme="purple" mr={3} onClick={onCloseClick}>
 							Close
 						</Button>
 					</ModalFooter>

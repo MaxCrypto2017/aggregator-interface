@@ -20,7 +20,7 @@ export const median = (arr: number[]): number => {
 	return s.length % 2 === 0 ? (s[mid - 1] + s[mid]) / 2 : s[mid];
 };
 
-export const formattedNum = (number, symbol = false, acceptNegatives = false) => {
+export const formattedNum = (number, symbol = false) => { // acceptNegatives = false
 	let currencySymbol;
 	if (symbol === true) {
 		currencySymbol = '$';
@@ -34,7 +34,7 @@ export const formattedNum = (number, symbol = false, acceptNegatives = false) =>
 	}
 	let formattedNum = String();
 	let num = parseFloat(number);
-	const isNegative = num < 0;
+	// const isNegative = num < 0;
 
 	// const currencyMark = isNegative ? `${currencySymbol}-` : currencySymbol
 	// const normalMark = isNegative ? '-' : ''

@@ -22,7 +22,7 @@
 		"@gnosis.pm/gp-v2-contracts": "^1.1.2",
 		"@rainbow-me/rainbowkit": "^0.12.0",
 		"@tanstack/react-query": "^4.35.0",
-		"@tanstack/react-virtual": "^3.0.0-alpha.0",
+		"@tanstack/react-virtual": "^3.0.0-beta.59",
 		"ariakit": "^2.0.0-next.41",
 		"bignumber.js": "^9.0.2",
 		"echarts": "^5.4.1",

@@ -6,9 +6,9 @@ import type { IToken } from '~/types';
 import { getAdapterRoutes } from './useGetRoutes';
 import { getTopRoute } from '~/utils/getTopRoute';
 import { useMemo } from 'react';
-import { ethers } from 'ethers/lib';
+import { ethers } from 'ethers';
 
-export const ZeroAddress: string = "0x0000000000000000000000000000000000000000";
+// export const ZeroAddress: string = "0x0000000000000000000000000000000000000000";
 
 async function getInitialLiquidityRoutes({
 	chain,
@@ -138,7 +138,7 @@ async function getAdapterRoutesByAmount({ chain, fromToken, toToken, amount, fro
 							amount: amount.toString(),
 							fromToken,
 							toToken,
-							userAddress: ZeroAddress
+							userAddress: ethers.constants.AddressZero
 						}
 					})
 				)

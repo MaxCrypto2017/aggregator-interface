@@ -6,15 +6,17 @@ import { ethers } from 'ethers/lib';
 import BigNumber from 'bignumber.js';
 import { ArrowDown } from 'react-feather';
 import styled from 'styled-components';
+import { defineStyle, defineStyleConfig } from '@chakra-ui/react'
+
 import {
 	useToast,
 	Button,
-	FormControl,
-	FormLabel,
-	Switch,
+	// FormControl,
+	// FormLabel,
+	// Switch,
 	Flex,
 	Box,
-	Spacer,
+	// Spacer,
 	IconButton,
 	Text,
 	ToastId,
@@ -288,7 +290,6 @@ const ConnectButtonWrapper = styled.div`
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
-
 	& button {
 		width: 100%;
 		text-align: center !important;
@@ -299,6 +300,16 @@ const ConnectButtonWrapper = styled.div`
 	}
 `;
 
+
+const outline = defineStyle({
+  border: '2px dashed', // change the appearance of the border
+  borderRadius: 0, // remove the border radius
+  fontWeight: 'semibold', // change the font weight
+})
+
+export const buttonTheme = defineStyleConfig({
+  variants: { outline },
+})
 const chains = getAllChains();
 
 export function AggregatorContainer({ tokenList, sandwichList }) {
@@ -956,8 +967,8 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 					<div>
 						<FormHeader>
 							<Flex>
-								<Box>Chain</Box>
-								<Spacer />
+								{/* <Box>Chain</Box> */}
+								{/* <Spacer />
 								<Tooltip content="Redirect requests through the SoulSwap Server to hide your IP address">
 									<FormControl display="flex" alignItems="baseline" gap="6px" justifyContent={'center'}>
 										<FormLabel htmlFor="privacy-switch" margin={0} fontSize="14px" color="gray.400">
@@ -969,9 +980,9 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 											isChecked={isPrivacyEnabled}
 										/>
 									</FormControl>
-								</Tooltip>
-								<SettingsIcon onClick={() => setSettingsModalOpen((open) => !open)} ml={4} mt={1} cursor="pointer" />
-								{isSmallScreen && finalSelectedFromToken && finalSelectedToToken ? (
+								</Tooltip> */}
+								{/* <SettingsIcon onClick={() => setSettingsModalOpen((open) => !open)} ml={4} mt={1} cursor="pointer" /> */}
+								{/* {isSmallScreen && finalSelectedFromToken && finalSelectedToToken ? (
 									<ArrowForwardIcon
 										width={'24px'}
 										height={'24px'}
@@ -979,7 +990,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 										cursor={'pointer'}
 										onClick={() => setUiState(STATES.ROUTES)}
 									/>
-								) : null}
+								) : null} */}
 							</Flex>
 						</FormHeader>
 
@@ -1073,25 +1084,89 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 
 					<SwapWrapper>
 						{!isConnected ? (
-							<Button colorScheme={'messenger'} onClick={openConnectModal}>
+							<button 
+								style={{
+									display: "flex",
+									justifyContent: "center",
+									alignItems: "center",
+									height: "40px",
+									width: "100%",
+									border: "2px solid",
+									borderRadius: "8px",
+									marginBottom: '20px',
+									backgroundColor: "#a171fb"
+								}}
+								onClick={openConnectModal}
+							>
 								Connect Wallet
-							</Button>
+							</button>
 						) : !isValidSelectedChain ? (
-							<Button colorScheme={'messenger'} onClick={() => switchNetwork(selectedChain.id)}>
+							<button 
+							style={{
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
+								height: "40px",
+								width: "100%",
+								border: "2px solid",
+								borderRadius: "8px",
+								marginBottom: '20px',
+								backgroundColor: "#a171fb"
+							}}
+								onClick={() => switchNetwork(selectedChain.id)}
+							>
 								Switch Network
-							</Button>
+							</button>
 						) : insufficientBalance ? (
-							<Button colorScheme={'messenger'} disabled>
+							<button 
+								style={{
+									display: "flex",
+									justifyContent: "center",
+									alignItems: "center",
+									height: "40px",
+									width: "100%",
+									border: "2px solid",
+									borderRadius: "8px",
+									marginBottom: '20px',
+									backgroundColor: "#e74042"
+								}}
+							>
 								Insufficient Balance
-							</Button>
+							</button>
 						) : !selectedRoute && isSmallScreen && finalSelectedFromToken && finalSelectedToToken ? (
-							<Button colorScheme={'messenger'} onClick={() => setUiState(STATES.ROUTES)}>
+							<button 
+							style={{
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
+								height: "40px",
+								width: "100%",
+								border: "2px solid",
+								borderRadius: "8px",
+								marginBottom: '20px',
+								backgroundColor: "#a171fb"
+							}}
+								onClick={() => setUiState(STATES.ROUTES)}
+							>
 								Select Aggregator
-							</Button>
+							</button>
 						) : hasMaxPriceImpact && !isDegenModeEnabled ? (
-							<Button colorScheme={'messenger'} disabled>
-								Price impact is too large
-							</Button>
+							<button 
+							style={{
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
+								height: "40px",
+								width: "100%",
+								border: "2px solid",
+								borderRadius: "8px",
+								marginBottom: '20px',
+								backgroundColor: "#e74042"
+							}} 
+								disabled
+							>
+								Price Impact Too Large
+							</button>
 						) : (
 							<>
 								{router && address && (
@@ -1112,7 +1187,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 													<Button
 														isLoading={isApproveResetLoading}
 														loadingText={isConfirmingResetApproval ? 'Confirming' : 'Preparing transaction'}
-														colorScheme={'messenger'}
+														colorScheme={'purple'}
 														onClick={() => {
 															if (approveReset) approveReset();
 														}}
@@ -1131,10 +1206,21 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 													isDegenModeEnabled={isDegenModeEnabled}
 												/>
 											) : (
-												<Button
-													isLoading={swapMutation.isLoading || isApproveLoading}
-													loadingText={isConfirmingApproval ? 'Confirming' : 'Preparing transaction'}
-													colorScheme={'messenger'}
+												<button
+													// isLoading={swapMutation.isLoading || isApproveLoading}
+													// loadingText={isConfirmingApproval ? 'Confirming' : 'Preparing transaction'}
+													// colorScheme={'purple'}
+													style={{
+														display: "flex",
+														justifyContent: "center",
+														alignItems: "center",
+														height: "40px",
+														width: "100%",
+														border: "2px solid",
+														borderRadius: "8px",
+														marginBottom: '20px',
+														backgroundColor: "#a171fb"
+													}}
 													onClick={() => {
 														//scroll Routes into view
 														!selectedRoute && routesRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -1168,13 +1254,15 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 														? `Swap via ${selectedRoute.name}`
 														: slippageIsWorng
 														? 'Set Slippage'
-														: 'Approve'}
-												</Button>
+														: 'Approve'
+													}
+
+												</button>
 											)}
 
 											{!isApproved && selectedRoute && inifiniteApprovalAllowed.includes(selectedRoute.name) && (
 												<Button
-													colorScheme={'messenger'}
+													colorScheme={'purple'}
 													loadingText={isConfirmingInfiniteApproval ? 'Confirming' : 'Preparing transaction'}
 													isLoading={isApproveInfiniteLoading}
 													onClick={() => {
@@ -1307,11 +1395,15 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 							{aggregator === r.name && (
 								<SwapUnderRoute>
 									{!isConnected ? (
-										<ConnectButtonWrapper>
+										<ConnectButtonWrapper
+											// style={{
+											// 	border: '1px solid #FFFFFF'
+											// }}
+										>
 											<ConnectButton />
 										</ConnectButtonWrapper>
 									) : !isValidSelectedChain ? (
-										<Button colorScheme={'messenger'} onClick={() => switchNetwork(selectedChain.id)}>
+										<Button colorScheme={'purple'} onClick={() => switchNetwork(selectedChain.id)}>
 											Switch Network
 										</Button>
 									) : (
@@ -1334,7 +1426,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 																<Button
 																	isLoading={isApproveResetLoading}
 																	loadingText={isConfirmingResetApproval ? 'Confirming' : 'Preparing transaction'}
-																	colorScheme={'messenger'}
+																	colorScheme={'purple'}
 																	onClick={() => {
 																		if (approveReset) approveReset();
 																	}}
@@ -1352,10 +1444,21 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 																isMaxPriceImpact={hasMaxPriceImpact}
 															/>
 														) : (
-															<Button
-																isLoading={swapMutation.isLoading || isApproveLoading}
-																loadingText={isConfirmingApproval ? 'Confirming' : 'Preparing transaction'}
-																colorScheme={'messenger'}
+															<button
+																// isLoading={swapMutation.isLoading || isApproveLoading}
+																// loadingText={isConfirmingApproval ? 'Confirming' : 'Preparing transaction'}
+																// colorScheme={'purple'}
+																style={{
+																	display: "flex",
+																	justifyContent: "center",
+																	alignItems: "center",
+																	height: "40px",
+																	width: "100%",
+																	border: "2px solid",
+																	borderRadius: "8px",
+																	marginBottom: '20px',
+																	backgroundColor: "#a171fb"
+																}}
 																onClick={() => {
 																	if (approve) approve();
 
@@ -1385,12 +1488,12 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 																	: slippageIsWorng
 																	? 'Set Slippage'
 																	: 'Approve'}
-															</Button>
+															</button>
 														)}
 
 														{!isApproved && selectedRoute && inifiniteApprovalAllowed.includes(selectedRoute.name) && (
 															<Button
-																colorScheme={'messenger'}
+																colorScheme={'purple'}
 																loadingText={isConfirmingInfiniteApproval ? 'Confirming' : 'Preparing transaction'}
 																isLoading={isApproveInfiniteLoading}
 																onClick={() => {

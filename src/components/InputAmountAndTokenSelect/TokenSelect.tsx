@@ -1,6 +1,6 @@
 // import { ethers } from 'ethers/lib';
 import { useMemo, useRef, useState } from 'react';
-import { useVirtual } from '@tanstack/react-virtual';
+import { useVirtualizer } from '@tanstack/react-virtual';
 import { Modal, ModalOverlay, ModalContent, ModalCloseButton, useDisclosure, Input } from '@chakra-ui/react';
 import { WarningTwoIcon } from '@chakra-ui/icons';
 import { Header, IconImage, PairRow } from '../Aggregator/Search';
@@ -55,12 +55,12 @@ const Row = ({ chain, token, onClick }) => {
 							fontSize="0.75rem"
 						>
 							<span>via CoinGecko</span>
-							<Image src={coingecko} 
-								height={14} 
-								width={14} 
-								objectFit="contain" 
-								alt="" 
-								unoptimized 
+							<Image src={coingecko}
+								height={14}
+								width={14}
+								objectFit="contain"
+								alt=""
+								unoptimized
 							/>
 						</Text>
 						{blockExplorer && (
@@ -158,8 +158,8 @@ const AddToken = ({ address, selectedChain, onClick }) => {
 				{isLoading
 					? 'Loading...'
 					: data?.name
-					? `${data.name} (${data.symbol})`
-					: address.slice(0, 4) + '...' + address.slice(-4)}
+						? `${data.name} (${data.symbol})`
+						: address.slice(0, 4) + '...' + address.slice(-4)}
 			</Text>
 
 			<Button height={38} marginLeft="auto" onClick={onTokenClick} disabled={isError}>
@@ -189,29 +189,28 @@ const SelectModal = ({ isOpen, onClose, data, onClick, selectedChain }) => {
 	const filteredData = useMemo(() => {
 		return debouncedInput
 			? data?.filter((token) => {
-					if (token.symbol && token.symbol.toLowerCase()?.includes(debouncedInput.toLowerCase())) {
-						return true;
-					}
+				if (token.symbol && token.symbol.toLowerCase()?.includes(debouncedInput.toLowerCase())) {
+					return true;
+				}
 
-					if (token.address && token.address.toLowerCase() === debouncedInput.toLowerCase()) {
-						return true;
-					}
+				if (token.address && token.address.toLowerCase() === debouncedInput.toLowerCase()) {
+					return true;
+				}
 
-					if (token.name && token.name.toLowerCase()?.includes(debouncedInput.toLowerCase())) {
-						return true;
-					}
+				if (token.name && token.name.toLowerCase()?.includes(debouncedInput.toLowerCase())) {
+					return true;
+				}
 
-					return false;
-			  })
+				return false;
+			})
 			: data;
 	}, [debouncedInput, data]);
 
 	const parentRef = useRef();
 
-	const rowVirtualizer = useVirtual({
-		size: filteredData.length,
-		// getScrollElement: () => parentRef.current,
-		parentRef: parentRef.current,
+	const rowVirtualizer = useVirtualizer({
+		count: filteredData.length,
+		getScrollElement: () => parentRef.current,
 		estimateSize: (index) => (filteredData[index].isGeckoToken ? 72 : 40),
 		overscan: 10
 	});
@@ -261,12 +260,12 @@ const SelectModal = ({ isOpen, onClose, data, onClick, selectedChain }) => {
 				>
 					<div
 						style={{
-							height: `${rowVirtualizer.totalSize}px`,
+							height: `${rowVirtualizer.getTotalSize()}px`,
 							width: '100%',
 							position: 'relative'
 						}}
 					>
-						{rowVirtualizer.virtualItems.map((virtualRow) => (
+						{rowVirtualizer.getVirtualItems().map((virtualRow) => (
 							<div
 								key={virtualRow.index + filteredData[virtualRow.index].address}
 								style={{

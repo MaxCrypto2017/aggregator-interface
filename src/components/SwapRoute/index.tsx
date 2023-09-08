@@ -75,7 +75,7 @@ const Route = ({
 
 	const afterFees =
 		toTokenPrice && Number.isFinite(Number(toTokenPrice)) && netOut && Number.isFinite(Number(netOut))
-			? `$${formattedNum(netOut.toFixed(1), false, true)}`
+			? `$${formattedNum(netOut.toFixed(1), true)}`
 			: null;
 	const isGasNotKnown = gasUsd === 'Unknown' || Number.isNaN(Number(gasUsd));
 	const txGas = isGasNotKnown ? '' : '$' + formattedNum(gasUsd);

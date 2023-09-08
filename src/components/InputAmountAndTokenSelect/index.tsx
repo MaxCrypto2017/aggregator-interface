@@ -61,9 +61,9 @@ export function InputAmountAndTokenSelect({
 			border="1px solid transparent"
 			_focusWithin={{ border: '1px solid white' }}
 		>
-			<Text fontSize="0.875rem" fontWeight={400} color="#a2a2a2" whiteSpace="nowrap" minH="1.375rem">
+			{/* <Text fontSize="0.875rem" fontWeight={400} color="#a2a2a2" whiteSpace="nowrap" minH="1.375rem">
 				{type === 'amountIn' ? 'You sell' : 'You buy'}
-			</Text>
+			</Text> */}
 
 			<Flex flexDir={{ md: 'row' }} gap={{ base: '12px', md: '8px' }}>
 				<Box pos="relative">

@@ -240,16 +240,17 @@ function Slippage({ slippage, setSlippage, fromToken, toToken }) {
 					You are trading stablecoins but your slippage is very high, we recommend setting it to 0.05% or lower
 				</Alert>
 			) : null}
-			<Text fontWeight="400" display="flex" justifyContent="space-between" alignItems="center" fontSize="0.875rem">
+			{/* <Text fontWeight="400" display="flex" justifyContent="space-between" alignItems="center" fontSize="0.875rem">
 				Swap Slippage: {slippage && !Number.isNaN(Number(slippage)) ? Number(slippage) + '%' : ''}
-			</Text>
+			</Text> */}
 			<Box display="flex" gap="6px" flexWrap="wrap" width="100%">
 				{['0.1', '0.5', '1', '5'].map((slippage) => (
 					<Button
 						fontSize="0.875rem"
 						fontWeight="500"
 						p="8px"
-						bg="#38393e"
+						// purple
+						bg="#A171FB"
 						height="2rem"
 						onClick={() => {
 							setSlippage(slippage);
@@ -899,7 +900,7 @@ export function AggregatorContainer() {
 						{!isConnected ? (
 							<>
 								<Button
-									colorScheme={'messenger'}
+									colorScheme={'purple'}
 									loadingText={isConfirmingApproval ? 'Confirming' : 'Preparing transaction'}
 									isLoading={isApproveInfiniteLoading}
 									onClick={() => {
@@ -918,7 +919,7 @@ export function AggregatorContainer() {
 							gap="8px"
 						>
 							<Button
-								colorScheme={'messenger'}
+								colorScheme={'purple'}
 								loadingText={'Confirming'}
 								isLoading={isApproveLoading}
 								onClick={() => {
@@ -933,7 +934,7 @@ export function AggregatorContainer() {
 							<Text fontWeight={'bold'}>OR</Text>
 
 							<Button
-								colorScheme={'messenger'}
+								colorScheme={'purple'}
 								loadingText={'Confirming'}
 								isLoading={isApproveNonInfiniteLoading}
 								onClick={() => {
@@ -954,7 +955,7 @@ export function AggregatorContainer() {
 							/>
 
 							<Button
-								colorScheme={'messenger'}
+								colorScheme={'purple'}
 								loadingText={isConfirmingInfiniteApproval ? 'Confirming' : 'Preparing transaction'}
 								isLoading={isClaimLoading}
 								onClick={() => {
@@ -988,7 +989,7 @@ export function AggregatorContainer() {
 						</VStack>
 
 						<Button
-							colorScheme={'messenger'}
+							colorScheme={'purple'}
 							loadingText={isConfirmingInfiniteApproval ? 'Confirming' : 'Preparing transaction'}
 							isLoading={swapMutation.isLoading}
 							onClick={() => {
@@ -1127,7 +1128,7 @@ export function AggregatorContainer() {
 						/>
 					</Flex>
 
-					<Button colorScheme={'messenger'} onClick={() => refetch?.()} w="fit-content" ml="auto">
+					<Button colorScheme={'purple'} onClick={() => refetch?.()} w="fit-content" ml="auto">
 						Refresh Price
 					</Button>
 
@@ -1147,21 +1148,73 @@ export function AggregatorContainer() {
 
 					<SwapWrapper>
 						{!isConnected ? (
-							<Button colorScheme={'messenger'} onClick={openConnectModal}>
+							<button 
+							style={{
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
+								height: "40px",
+								width: "100%",
+								border: "2px solid",
+								borderRadius: "8px",
+								marginBottom: '20px',
+								backgroundColor: "#a171fb"
+							}}
+							onClick={openConnectModal}
+						>
 								Connect Wallet
-							</Button>
+							</button>
 						) : !isValidSelectedChain ? (
-							<Button colorScheme={'messenger'} onClick={() => switchNetwork(selectedChain.id)}>
+							<button 
+								style={{
+									display: "flex",
+									justifyContent: "center",
+									alignItems: "center",
+									height: "40px",
+									width: "100%",
+									border: "2px solid",
+									borderRadius: "8px",
+									marginBottom: '20px',
+									backgroundColor: "#a171fb"
+							}}
+							onClick={() => switchNetwork(selectedChain.id)}
+							>
 								Switch Network
-							</Button>
+							</button>
 						) : insufficientBalance ? (
-							<Button colorScheme={'messenger'} disabled>
+							<button 
+								style={{
+									display: "flex",
+									justifyContent: "center",
+									alignItems: "center",
+									height: "40px",
+									width: "100%",
+									border: "2px solid",
+									borderRadius: "8px",
+									marginBottom: '20px',
+									backgroundColor: "#e74042"
+							}}
+								disabled
+							>
 								Insufficient Balance
-							</Button>
+							</button>
 						) : hasMaxPriceImpact ? (
-							<Button colorScheme={'messenger'} disabled>
+							<button 
+								style={{
+									display: "flex",
+									justifyContent: "center",
+									alignItems: "center",
+									height: "40px",
+									width: "100%",
+									border: "2px solid",
+									borderRadius: "8px",
+									marginBottom: '20px',
+									backgroundColor: "#e74042"
+							}}
+							disabled
+							>
 								Price impact is too large
-							</Button>
+							</button>
 						) : (
 							<>
 								{router && address && (
@@ -1173,7 +1226,7 @@ export function AggregatorContainer() {
 												<Button
 													isLoading={swapMutation.isLoading || isApproveLoading}
 													loadingText={isConfirmingApproval ? 'Confirming' : 'Preparing transaction'}
-													colorScheme={'messenger'}
+													colorScheme={'purple'}
 													onClick={() => {
 														//scroll Routes into view
 														!selectedRoute && routesRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -1208,7 +1261,7 @@ export function AggregatorContainer() {
 
 											{!isApproved && selectedRoute && inifiniteApprovalAllowed.includes(selectedRoute.name) && (
 												<Button
-													colorScheme={'messenger'}
+													colorScheme={'purple'}
 													loadingText={isConfirmingInfiniteApproval ? 'Confirming' : 'Preparing transaction'}
 													isLoading={isApproveInfiniteLoading}
 													onClick={() => {

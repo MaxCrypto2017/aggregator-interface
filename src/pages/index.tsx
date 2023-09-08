@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AggregatorContainer } from '~/components/Aggregator';
-import ConnectButton from '~/components/Aggregator/ConnectButton';
+// import ConnectButton from '~/components/Aggregator/ConnectButton';
 import Header from '~/components/Aggregator/Header';
 import Layout from '~/layout';
 import { getSandwichList } from '~/props/getSandwichList';
@@ -25,7 +25,7 @@ export default function Aggregator(props) {
 	return (
 		<Layout title={`Meta-Aggregator - SoulSwap`} defaultSEO>
 			<Header>
-				<ConnectButton {...props} />
+				{/* <ConnectButton {...props} /> */}
 			</Header>
 			<AggregatorContainer {...props} />
 		</Layout>
