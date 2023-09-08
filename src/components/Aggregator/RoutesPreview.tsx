@@ -80,18 +80,18 @@ const RoutesPreview = () => {
 				</IconsBody>
 			</Header>
 			<Box zIndex={1}>
-				<Heading size={'md'} textAlign="center" mt={'4'}>
-					The Aggregator of Aggregators
+				<Heading size={'lg'} textAlign="center" mt={'4'}>
+				Aggregator of Aggregators
 				</Heading>
-				<CheckBody>
+				{/* <CheckBody>
 					<CheckWithText text="Totally Free" />
 					<CheckWithText text="Gas Estimation" />
 					<CheckWithText text="Preserves Privacy" />
-				</CheckBody>
+				</CheckBody> */}
 
 				<Text color={'gray.300'} textAlign="center" mt={6}>
-					SoulSwap looks for the best route for your trade <br /> among a variety of Dex Aggregators, guaranteeing you{' '}
-					<br /> the best execution prices in DeFi.
+					SoulSwap optimizes trades by searching aggregators, guaranteeing you
+					the best prices.
 				</Text>
 			</Box>
 		</Flex>

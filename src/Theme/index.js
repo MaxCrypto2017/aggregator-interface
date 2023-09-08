@@ -46,7 +46,7 @@ const theme = (darkMode) => ({
 	green1: getStyle('green1', '#27AE60'),
 	link: getStyle('link', '#2172E5'),
 	blue: getStyle('blue', '#2f80ed'),
-	purple: getStyle('purple', '#a171fb'),
+	purple: getStyle('purple', '#6A00FF'),
 
 	//shadow
 	shadowSm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',

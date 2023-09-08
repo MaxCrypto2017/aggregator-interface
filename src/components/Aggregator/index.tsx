@@ -1094,7 +1094,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 									border: "2px solid",
 									borderRadius: "8px",
 									marginBottom: '20px',
-									backgroundColor: "#a171fb"
+									backgroundColor: "#6A00FF"
 								}}
 								onClick={openConnectModal}
 							>
@@ -1111,7 +1111,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 								border: "2px solid",
 								borderRadius: "8px",
 								marginBottom: '20px',
-								backgroundColor: "#a171fb"
+								backgroundColor: "#6A00FF"
 							}}
 								onClick={() => switchNetwork(selectedChain.id)}
 							>
@@ -1144,7 +1144,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 								border: "2px solid",
 								borderRadius: "8px",
 								marginBottom: '20px',
-								backgroundColor: "#a171fb"
+								backgroundColor: "#6A00FF"
 							}}
 								onClick={() => setUiState(STATES.ROUTES)}
 							>
@@ -1219,7 +1219,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 														border: "2px solid",
 														borderRadius: "8px",
 														marginBottom: '20px',
-														backgroundColor: "#a171fb"
+														backgroundColor: "#6A00FF"
 													}}
 													onClick={() => {
 														//scroll Routes into view
@@ -1457,7 +1457,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 																	border: "2px solid",
 																	borderRadius: "8px",
 																	marginBottom: '20px',
-																	backgroundColor: "#a171fb"
+																	backgroundColor: "#6A00FF"
 																}}
 																onClick={() => {
 																	if (approve) approve();

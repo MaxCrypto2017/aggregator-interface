@@ -63,7 +63,7 @@ export function Slippage({ slippage, setSlippage, fromToken, toToken }) {
 						fontWeight="500"
 						p="8px"
 						// purple
-						bg="#A171FB"
+						bg="#6A00FF"
 						height="2rem"
 						onClick={() => {
 							setSlippage(slippage);

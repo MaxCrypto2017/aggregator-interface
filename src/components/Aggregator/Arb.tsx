@@ -250,7 +250,7 @@ function Slippage({ slippage, setSlippage, fromToken, toToken }) {
 						fontWeight="500"
 						p="8px"
 						// purple
-						bg="#A171FB"
+						bg="#6A00FF"
 						height="2rem"
 						onClick={() => {
 							setSlippage(slippage);
@@ -1158,7 +1158,7 @@ export function AggregatorContainer() {
 								border: "2px solid",
 								borderRadius: "8px",
 								marginBottom: '20px',
-								backgroundColor: "#a171fb"
+								backgroundColor: "#6A00FF"
 							}}
 							onClick={openConnectModal}
 						>
@@ -1175,7 +1175,7 @@ export function AggregatorContainer() {
 									border: "2px solid",
 									borderRadius: "8px",
 									marginBottom: '20px',
-									backgroundColor: "#a171fb"
+									backgroundColor: "#6A00FF"
 							}}
 							onClick={() => switchNetwork(selectedChain.id)}
 							>

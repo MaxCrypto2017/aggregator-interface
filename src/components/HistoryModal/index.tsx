@@ -106,7 +106,7 @@ function HistoryModal({ tokensUrlMap, tokensSymbolsMap }) {
 					border: "2px solid",
 					borderRadius: "8px",
 					marginBottom: '20px',
-					backgroundColor: "#a171fb"
+					backgroundColor: "#6A00FF"
 				}}
 				// borderRadius="12px"
 				// height="36px"
