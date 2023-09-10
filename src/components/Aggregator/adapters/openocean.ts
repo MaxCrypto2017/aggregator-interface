@@ -63,7 +63,7 @@ export async function getQuote(chain: string, from: string, to: string, amount: 
 			gasPrice.fast?.maxFeePerGas ?? gasPrice.fast
 		}&slippage=${+slippage * 100}&account=${
 			userAddress || ethers.constants.AddressZero
-		}&referrer=0x5521c3dfd563d48ca64e132324024470f3498526`
+		}&referrer=0x1f61947cdf6801e55b864690bfbcdeacf152c071`
 	).then((r) => r.json());
 
 	let gas = data.estimatedGas;
