@@ -64,7 +64,7 @@ export async function getQuote(chain: string, from: string, to: string, amount: 
 			chainToId[chain]
 		}&from=${tokenFrom}&to=${tokenTo}&amount=${amount}&receiver=${receiver}&slippage=${
 			+extra.slippage / 100
-		}&source=defillama&ref=${referrerAddress}`,
+		}&source=soulswap&ref=${referrerAddress}`,
 		{ headers }
 	).then((r) => r.json());
 	const data = result.quoteData;
