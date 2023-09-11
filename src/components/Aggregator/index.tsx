@@ -330,7 +330,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 	const [slippage, setSlippage] = useLocalStorage('llamaswap-slippage', '0.5');
 	const [lastOutputValue, setLastOutputValue] = useState(null);
 	const [disabledAdapters, setDisabledAdapters] = useLocalStorage('llamaswap-disabledadapters', []);
-	const [isDegenModeEnabled, _] = useLocalStorage('llamaswap-degenmode', false);
+	const [isDegenModeEnabled, _] = useLocalStorage('llamaswap-degenmode', true);
 	const [isSettingsModalOpen, setSettingsModalOpen] = useState(false);
 
 	// mobile states

@@ -16,7 +16,7 @@ const SwapConfirmation = ({
 	handleSwap,
 	isUnknownPrice = false,
 	isMaxPriceImpact = false,
-	isDegenModeEnabled = false
+	isDegenModeEnabled = true
 }) => {
 	const { isOpen, onToggle, onClose } = useDisclosure();
 	const requiredText = isMaxPriceImpact ? 'trade' : 'confirm';
