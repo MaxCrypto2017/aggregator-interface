@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
-const SwapConfiramtion = ({
+const SwapConfirmation = ({
 	handleSwap,
 	isUnknownPrice = false,
 	isMaxPriceImpact = false,
@@ -30,16 +30,46 @@ const SwapConfiramtion = ({
 
 	return (
 		<>
-			<Popover returnFocusOnClose={false} isOpen={isOpen} onClose={onPopoverClose} placement="top">
+			<Popover 
+				returnFocusOnClose={false} 
+				isOpen={isOpen} 
+				onClose={onPopoverClose} 
+				placement="top"
+				// style={{
+				// 	backgroundColor: "#e84141"
+				// }}
+				>
 				<PopoverTrigger>
-					<Button colorScheme="red" onClick={() => onToggle()}>
+					<button 
+						style={{
+							display: "flex",
+							justifyContent: "center",
+							alignItems: "center",
+							height: "40px",
+							width: "100%",
+							border: "2px solid #a171fb",
+							borderRadius: "8px",
+							marginBottom: '20px',
+							backgroundColor: "#6a00ff"
+						}}
+						onClick={() => onToggle()}
+					>
 						Swap
-					</Button>
+					</button>
 				</PopoverTrigger>
 				<PopoverContent>
 					<PopoverArrow />
 					<PopoverCloseButton />
-					<PopoverHeader>Swap Confirmation.</PopoverHeader>
+					<PopoverHeader
+						style={{
+							display: "flex",
+							justifyContent: "center",
+							backgroundColor: "#e84141",
+							fontSize: "20px",
+						}}
+					>
+						<b>Swap Confirmation</b>
+				</PopoverHeader>
 
 					{isUnknownPrice ? (
 						<PopoverBody>
@@ -50,11 +80,15 @@ const SwapConfiramtion = ({
 							</Button>
 						</PopoverBody>
 					) : (
-						<PopoverBody>
-							Price impact is too high.
-							<br />
-							You'll likely lose money.
-							<br />
+						<PopoverBody
+							style={{
+								display: "grid",
+								justifyContent: "center",
+								backgroundColor: "#b84141",
+							}}
+						>
+							<b>Warning: High Price Impact</b>
+							{/* <br /> */}
 							{!isDegenModeEnabled ? (
 								<>
 									Type "{requiredText}" to make a swap.
@@ -66,14 +100,25 @@ const SwapConfiramtion = ({
 									></Input>
 								</>
 							) : null}
-							<Button
-								colorScheme={'red'}
+							<button
+								// colorScheme={'red'}
+								style={{
+									display: "flex",
+									justifyContent: "center",
+									alignItems: "center",
+									height: "40px",
+									width: "100%",
+									border: "2px solid #FFFFFF",
+									borderRadius: "8px",
+									marginBottom: '20px',
+									marginTop: '12px',
+									backgroundColor: "#e84141"
+								}}
 								onClick={handleSwap}
-								mt={4}
-								isDisabled={isSwapDisabled && !isDegenModeEnabled}
+								disabled={isSwapDisabled && !isDegenModeEnabled}
 							>
-								Swap with high slippage
-							</Button>
+								Swap with High-Slippage
+							</button>
 						</PopoverBody>
 					)}
 				</PopoverContent>
@@ -82,4 +127,4 @@ const SwapConfiramtion = ({
 	);
 };
 
-export default SwapConfiramtion;
+export default SwapConfirmation;

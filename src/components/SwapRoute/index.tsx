@@ -87,6 +87,10 @@ const Route = ({
 			className={selected ? 'RouteWrapper is-selected' : 'RouteWrapper'}
 			selected={selected}
 			best={index === 0}
+			style={{ 
+				// background: selected ? "#A171FB" : "#2d3039",
+				border: selected ? "2px solid #A171FB" : "1px solid #2d3039",
+			}}
 		>
 			<RouteRow>
 				{inputAmount ? (

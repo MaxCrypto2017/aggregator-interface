@@ -19,18 +19,29 @@ export const TransactionModal = ({ open, setOpen, link }) => {
 			isOpen={open}
 			onClose={() => setOpen(false)}
 		>
-			<ModalOverlay />
+			<ModalOverlay 
+				style={{
+					background: "#A171FB"
+				}}
+			/>
 			<ModalContent>
 				<ModalCloseButton color="white" />
-
-				<ModalBody display="flex" gap="8px" flexDir="column" alignItems="center" marginY="4rem" color="white">
+				<ModalBody 
+					display="flex" 
+					gap="8px" 
+					flexDir="column" 
+					alignItems="center" 
+					marginY="4rem" 
+					color="#A171FB"
+				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="80"
 						height="80"
 						viewBox="0 0 24 24"
 						fill="none"
-						stroke="currentColor"
+						// stroke="currentColor"
+						stroke="#A171FB"
 						strokeWidth="0.5"
 						strokeLinecap="round"
 						strokeLinejoin="round"
@@ -39,7 +50,10 @@ export const TransactionModal = ({ open, setOpen, link }) => {
 						<polyline points="16 12 12 8 8 12"></polyline>
 						<line x1="12" y1="16" x2="12" y2="8"></line>
 					</svg>
-					<Text as="h1" fontSize="xl" fontWeight="600">
+					<Text as="h1" fontSize="xl" 
+						fontWeight="600"
+						color={"#A171FB"}
+					>
 						Transaction Submitted
 					</Text>
 				</ModalBody>
@@ -51,12 +65,12 @@ export const TransactionModal = ({ open, setOpen, link }) => {
 					textAlign={'center'}
 					padding="6px 1rem"
 					borderRadius="0.375rem"
-					bg="#a2cdff"
+					bg="#A171FB"
 					margin="0 1rem 1rem"
-					color="black"
+					color="white"
 					_hover={{ textDecoration: 'none' }}
 				>
-					View on explorer <ExternalLinkIcon mx="2px" />
+					View on Explorer <ExternalLinkIcon mx="2px" />
 				</ChakraLink>
 			</ModalContent>
 		</Modal>

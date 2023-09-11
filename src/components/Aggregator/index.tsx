@@ -16,7 +16,7 @@ import {
 	// Switch,
 	Flex,
 	Box,
-	// Spacer,
+	Spacer,
 	IconButton,
 	Text,
 	ToastId,
@@ -921,19 +921,19 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 		diffBetweenSelectedRouteAndTopRoute > 5 && (
 			<Alert status="warning" borderRadius="0.375rem" py="8px" key="diff">
 				<AlertIcon />
-				{`There is ${diffBetweenSelectedRouteAndTopRoute}% difference between selected route and top route.`}
+				{`Selected Route: ${diffBetweenSelectedRouteAndTopRoute}% less efficient than optimal.`}
 			</Alert>
 		),
 		!isLoading && !isPriceImpactNotKnown && selectedRoutesPriceImpact >= PRICE_IMPACT_WARNING_THRESHOLD ? (
 			<Alert status="warning" borderRadius="0.375rem" py="8px" key="impact">
 				<AlertIcon />
-				High price impact! More than {selectedRoutesPriceImpact.toFixed(2)}% drop.
+				Price Impact Exceeds: {`${selectedRoutesPriceImpact.toFixed(2)}%`}
 			</Alert>
 		) : null,
 		!isLoading && toTokenPrice && Number(selectedRoute?.amount) * toTokenPrice > 100e3 ? (
 			<Alert status="warning" borderRadius="0.375rem" py="8px" key="size">
 				<AlertIcon />
-				Your size is size. Please be mindful of slippage
+				Your size is large. Please be mindful of slippage.
 			</Alert>
 		) : null,
 		pairSandwichData ? <Sandwich sandiwichData={pairSandwichData} key="sandwich" /> : null
@@ -964,9 +964,16 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 
 			<BodyWrapper>
 				<Body>
-					<div>
+					<div
+						style={{ 
+							color: 'white', 
+							border: '3px solid #6A00FF', 
+							borderRadius: '12px' 
+						}}
+					>
 						<FormHeader>
 							<Flex>
+							<Spacer />
 								{/* <Box>Chain</Box> */}
 								{/* <Spacer />
 								<Tooltip content="Redirect requests through the SoulSwap Server to hide your IP address">
@@ -981,7 +988,19 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 										/>
 									</FormControl>
 								</Tooltip> */}
-								{/* <SettingsIcon onClick={() => setSettingsModalOpen((open) => !open)} ml={4} mt={1} cursor="pointer" /> */}
+								{/* <SettingsIcon 
+									onClick={() => setSettingsModalOpen((open) => !open)} 
+									ml={4} mt={1} mb={2}
+									height={8}
+									width={8}
+									cursor="pointer"
+									style={{
+										color: '#A171FB',
+										border: `1px solid #A171FB`,
+										borderRadius: '50%',
+										padding: '5px'
+									}}
+								/> */}
 								{/* {isSmallScreen && finalSelectedFromToken && finalSelectedToToken ? (
 									<ArrowForwardIcon
 										width={'24px'}
@@ -994,7 +1013,11 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 							</Flex>
 						</FormHeader>
 
-						<ReactSelect options={chains} value={selectedChain} onChange={onChainChange} />
+						<ReactSelect 
+							options={chains} 
+							value={selectedChain} 
+							onChange={onChainChange} 
+						/>
 					</div>
 					<Flex flexDir="column" gap="4px" pos="relative">
 						<InputAmountAndTokenSelect
@@ -1281,7 +1304,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 												</Button>
 											)}
 
-											{isSmallScreen && warnings?.length ? (
+											{/* {isSmallScreen && warnings?.length ? (
 												<Popover>
 													<PopoverTrigger>
 														<Button backgroundColor={'rgb(224, 148, 17)'} maxWidth="100px">
@@ -1290,7 +1313,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 													</PopoverTrigger>
 													<PopoverContent mr="8">{warnings}</PopoverContent>
 												</Popover>
-											) : null}
+											) : null} */}
 										</>
 									</>
 								)}
@@ -1314,10 +1337,14 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 							<Tooltip2
 								content={`Displayed data will auto-refresh after ${secondsToRefresh} seconds. Click here to update manually`}
 							>
-								<RepeatIcon pos="absolute" w="16px	" h="16px" mt="4px" ml="4px" />
+								{/* <RepeatIcon 
+									pos="absolute" w="16px" 
+									h="16px" mt="4px" ml="4px" 
+									color={"white"}
+								/> */}
 								<CircularProgress
 									value={100 - (secondsToRefresh / (REFETCH_INTERVAL / 1000)) * 100}
-									color="blue.400"
+									color="#A171FB"
 									onClick={refetch}
 									size="24px"
 									as="button"
@@ -1332,10 +1359,12 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 					  finalSelectedToToken &&
 					  routes &&
 					  routes.length ? (
-						<FormHeader>No available routes found</FormHeader>
+						<FormHeader>No Routes Found...</FormHeader>
 					) : null}
 					<Box display={{ base: 'none', md: 'block', lg: 'block' }}>
-						<span style={{ fontSize: '12px', color: '#999999', marginLeft: '4px', marginTop: '4px', display: 'flex' }}>
+						<span style={{ fontSize: '12px', color: '#A171FB', marginLeft: '4px', marginTop: '4px', display: 'flex', 
+						justifyContent: 'left' }}
+						>
 							{normalizedRoutes?.length ? `Best route is selected based on net output after gas fees.` : null}
 						</span>
 
@@ -1494,7 +1523,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 														{!isApproved && selectedRoute && inifiniteApprovalAllowed.includes(selectedRoute.name) && (
 															<Button
 																colorScheme={'purple'}
-																loadingText={isConfirmingInfiniteApproval ? 'Confirming' : 'Preparing transaction'}
+																loadingText={isConfirmingInfiniteApproval ? 'Confirming...' : 'Preparing...'}
 																isLoading={isApproveInfiniteLoading}
 																onClick={() => {
 																	if (approveInfinite) approveInfinite();

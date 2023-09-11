@@ -21,7 +21,8 @@ import { chunk } from 'lodash';
 import { useLocalStorage } from '~/hooks/useLocalStorage';
 
 export const Settings = ({ adapters, disabledAdapters, setDisabledAdapters, onClose: onExternalClose }) => {
-	const [isDegenModeEnabled, setIsDegenModeEnabled] = useLocalStorage('llamaswap-degenmode', false);
+	// sets: degen mode as default
+	const [isDegenModeEnabled, setIsDegenModeEnabled] = useLocalStorage('llamaswap-degenmode', true);
 	const { isOpen, onClose } = useDisclosure({ defaultIsOpen: true });
 	const onCloseClick = () => {
 		onExternalClose();
@@ -37,9 +38,16 @@ export const Settings = ({ adapters, disabledAdapters, setDisabledAdapters, onCl
 	const aggregatorChunks = chunk(adapters, 5);
 	return (
 		<>
-			<Modal isOpen={isOpen} onClose={onCloseClick} size={'lg'}>
+			<Modal 
+				isOpen={isOpen} 
+				onClose={onCloseClick} 
+				size={'sm'}
+			>
 				<ModalOverlay />
-				<ModalContent color={'white'} justifyContent={'center'}>
+				<ModalContent 
+				color={'#FFFFFF'} 
+				justifyContent={'center'}
+				>
 					<ModalHeader>Settings</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
@@ -67,9 +75,24 @@ export const Settings = ({ adapters, disabledAdapters, setDisabledAdapters, onCl
 					</ModalBody>
 
 					<ModalFooter>
-						<Button colorScheme="purple" mr={3} onClick={onCloseClick}>
+						<button 
+							// colorScheme="purple" 
+							// mr={3} 
+							style={{
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
+								height: "40px",
+								width: "100%",
+								border: "2px solid",
+								borderRadius: "8px",
+								marginBottom: '20px',
+								backgroundColor: "#6A00FF"
+							}}
+							onClick={onCloseClick}
+						>
 							Close
-						</Button>
+						</button>
 					</ModalFooter>
 				</ModalContent>
 			</Modal>

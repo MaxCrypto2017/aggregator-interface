@@ -34,13 +34,17 @@ export function Slippage({ slippage, setSlippage, fromToken, toToken }) {
 		!!slippage && slippage > 1 ? (
 			<Alert status="warning" borderRadius="0.375rem" py="8px">
 				<AlertIcon />
-				High slippage! You might get sandwiched with a slippage of {slippage}%
+				High slippage -- you may get sandwiched with a slippage of {slippage}%
 			</Alert>
 		) : null,
 		!!slippage && slippage > 0.05 && stablecoins.includes(fromToken) && stablecoins.includes(toToken) ? (
-			<Alert status="warning" borderRadius="0.375rem" py="8px" mt="2">
+			<Alert status="warning" 
+				borderRadius="0.375rem" py="8px" 
+				mt="2"
+				mb="2"
+			>
 				<AlertIcon />
-				You are trading stablecoins but your slippage is very high, we recommend setting it to 0.05% or lower
+				{`Recommended Slippage: 0.05%`}
 			</Alert>
 		) : null,
 		!!slippage && (!stablecoins.includes(fromToken) || !stablecoins.includes(toToken)) && slippage < 0.05 ? (

@@ -237,7 +237,7 @@ function Slippage({ slippage, setSlippage, fromToken, toToken }) {
 			{!!slippage && slippage > 0.05 && stablecoins.includes(fromToken) && stablecoins.includes(toToken) ? (
 				<Alert status="warning" borderRadius="0.375rem" py="8px">
 					<AlertIcon />
-					You are trading stablecoins but your slippage is very high, we recommend setting it to 0.05% or lower
+					{`Recommended Slippage: 0.05%`}
 				</Alert>
 			) : null}
 			{/* <Text fontWeight="400" display="flex" justifyContent="space-between" alignItems="center" fontSize="0.875rem">
@@ -692,7 +692,7 @@ export function AggregatorContainer() {
 		onError: (err: { reason: string; code: string }, variables) => {
 			if (err.code !== 'ACTION_REJECTED' || err.code.toString() === '-32603') {
 				toast({
-					title: 'Something went wrong.',
+					title: 'Refresh and try again.',
 					description: err.reason,
 					status: 'error',
 					duration: 10000,
