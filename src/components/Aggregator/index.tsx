@@ -302,13 +302,13 @@ const ConnectButtonWrapper = styled.div`
 
 
 const outline = defineStyle({
-  border: '2px dashed', // change the appearance of the border
-  borderRadius: 0, // remove the border radius
-  fontWeight: 'semibold', // change the font weight
+	border: '2px dashed', // change the appearance of the border
+	borderRadius: 0, // remove the border radius
+	fontWeight: 'semibold', // change the font weight
 })
 
 export const buttonTheme = defineStyleConfig({
-  variants: { outline },
+	variants: { outline },
 })
 const chains = getAllChains();
 
@@ -380,35 +380,33 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 		const finalSelectedFromToken: IToken =
 			!selectedFromToken && fromToken2
 				? {
-						name: fromToken2.name || fromToken2.address.slice(0, 4) + '...' + fromToken2.address.slice(-4),
-						label: fromToken2.symbol || fromToken2.address.slice(0, 4) + '...' + fromToken2.address.slice(-4),
-						symbol: fromToken2.symbol || '',
-						address: fromToken2.address,
-						value: fromToken2.address,
-						decimals: fromToken2.decimals,
-						logoURI: `https://token-icons.llamao.fi/icons/tokens/${selectedChain.id || 1}/${
-							fromToken2.address
+					name: fromToken2.name || fromToken2.address.slice(0, 4) + '...' + fromToken2.address.slice(-4),
+					label: fromToken2.symbol || fromToken2.address.slice(0, 4) + '...' + fromToken2.address.slice(-4),
+					symbol: fromToken2.symbol || '',
+					address: fromToken2.address,
+					value: fromToken2.address,
+					decimals: fromToken2.decimals,
+					logoURI: `https://token-icons.llamao.fi/icons/tokens/${selectedChain.id || 1}/${fromToken2.address
 						}?h=20&w=20`,
-						chainId: selectedChain.id || 1,
-						geckoId: null
-				  }
+					chainId: selectedChain.id || 1,
+					geckoId: null
+				}
 				: selectedFromToken;
 
 		const finalSelectedToToken: IToken =
 			!selectedToToken && toToken2
 				? {
-						name: toToken2.name || toToken2.address.slice(0, 4) + '...' + toToken2.address.slice(-4),
-						label: toToken2.symbol || toToken2.address.slice(0, 4) + '...' + toToken2.address.slice(-4),
-						symbol: toToken2.symbol || '',
-						address: toToken2.address,
-						value: toToken2.address,
-						decimals: toToken2.decimals,
-						logoURI: `https://token-icons.llamao.fi/icons/tokens/${selectedChain.id || 1}/${
-							toToken2.address
+					name: toToken2.name || toToken2.address.slice(0, 4) + '...' + toToken2.address.slice(-4),
+					label: toToken2.symbol || toToken2.address.slice(0, 4) + '...' + toToken2.address.slice(-4),
+					symbol: toToken2.symbol || '',
+					address: toToken2.address,
+					value: toToken2.address,
+					decimals: toToken2.decimals,
+					logoURI: `https://token-icons.llamao.fi/icons/tokens/${selectedChain.id || 1}/${toToken2.address
 						}?h=20&w=20`,
-						chainId: selectedChain.id || 1,
-						geckoId: null
-				  }
+					chainId: selectedChain.id || 1,
+					geckoId: null
+				}
 				: selectedToToken;
 
 		return { finalSelectedFromToken, finalSelectedToToken };
@@ -560,9 +558,9 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 			}
 			return isOutputTrade
 				? typeof a.amountInUsd === 'number' &&
-				  typeof a.gasUsd === 'number' &&
-				  typeof b.amountInUsd === 'number' &&
-				  typeof b.gasUsd === 'number'
+					typeof a.gasUsd === 'number' &&
+					typeof b.amountInUsd === 'number' &&
+					typeof b.gasUsd === 'number'
 					? a.amountInUsd + a.gasUsd - (b.amountInUsd + b.gasUsd)
 					: Number(a.amountIn) - Number(b.amountIn)
 				: b.netOut - a.netOut;
@@ -663,12 +661,12 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 
 	const selectedRoutesPriceImpact =
 		fromTokenPrice &&
-		toTokenPrice &&
-		priceImpactRoute &&
-		priceImpactRoute.amountUsd &&
-		priceImpactRoute.amountInUsd &&
-		(debouncedAmount || debouncedAmountOut) &&
-		!Number.isNaN(Number(priceImpactRoute.amountUsd))
+			toTokenPrice &&
+			priceImpactRoute &&
+			priceImpactRoute.amountUsd &&
+			priceImpactRoute.amountInUsd &&
+			(debouncedAmount || debouncedAmountOut) &&
+			!Number.isNaN(Number(priceImpactRoute.amountUsd))
 			? 100 - (Number(priceImpactRoute.amountUsd) / Number(priceImpactRoute.amountInUsd)) * 100
 			: null;
 
@@ -678,10 +676,10 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 
 	const insufficientBalance =
 		balance.isSuccess &&
-		balance.data &&
-		!Number.isNaN(Number(balance.data.formatted)) &&
-		balance.data.value &&
-		selectedRoute
+			balance.data &&
+			!Number.isNaN(Number(balance.data.formatted)) &&
+			balance.data.value &&
+			selectedRoute
 			? +selectedRoute?.fromAmount > +balance.data.value
 			: false;
 
@@ -698,9 +696,9 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 	const amountToApprove =
 		amountOut && amountOut !== ''
 			? BigNumber(selectedRoute?.fromAmount)
-					.times(100 + Number(slippage) * 2)
-					.div(100)
-					.toFixed(0)
+				.times(100 + Number(slippage) * 2)
+				.div(100)
+				.toFixed(0)
 			: selectedRoute?.fromAmount;
 	const {
 		isApproved,
@@ -884,14 +882,14 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 
 	const pairSandwichData =
 		sandwichList?.[selectedChain?.value]?.[
-			normalizeTokens(
-				finalSelectedFromToken?.address === ethers.constants.AddressZero
-					? WETH[selectedChain?.value]
-					: finalSelectedFromToken?.address,
-				finalSelectedToToken?.address === ethers.constants.AddressZero
-					? WETH[selectedChain?.value]
-					: finalSelectedToToken?.address
-			).join('')
+		normalizeTokens(
+			finalSelectedFromToken?.address === ethers.constants.AddressZero
+				? WETH[selectedChain?.value]
+				: finalSelectedFromToken?.address,
+			finalSelectedToToken?.address === ethers.constants.AddressZero
+				? WETH[selectedChain?.value]
+				: finalSelectedToToken?.address
+		).join('')
 		];
 
 	const isAmountSynced = debouncedAmount === formatAmount(amount) && formatAmount(amountOut) === debouncedAmountOut;
@@ -902,7 +900,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 		aggregator === 'CowSwap' ? (
 			<>
 				{finalSelectedFromToken.value === ethers.constants.AddressZero && Number(slippage) < 2 ? (
-			<Alert status="warning" borderRadius="0.375rem" py="8px" key="cow1">
+					<Alert status="warning" borderRadius="0.375rem" py="8px" key="cow1">
 						<AlertIcon />
 						Swaps from {finalSelectedFromToken.symbol} on CowSwap need to have slippage higher than 2%.
 					</Alert>
@@ -940,7 +938,18 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 	].filter(Boolean);
 
 	return (
-		<Wrapper>
+		<Wrapper
+			style={{
+				color: 'white',
+				// border: '2px solid #6A00FF', 
+				backgroundColor: '#13131B',
+				paddingBottom: '6px',
+				paddingLeft: '6px',
+				paddingRight: '6px',
+				justifyContent: 'center',
+				borderRadius: '16px'
+			}}
+		>
 			{isSettingsModalOpen ? (
 				<Settings
 					adapters={adaptersNames}
@@ -962,18 +971,34 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 				</a>
 			</Text> */}
 
-			<BodyWrapper>
+			<BodyWrapper
+				style={{
+					color: 'white',
+					// border: '2px solid #6A00FF', 
+					backgroundColor: '#13131B',
+					paddingBottom: '6px',
+					paddingLeft: '6px',
+					paddingRight: '6px',
+					justifyContent: 'center',
+					// borderRadius: '16px'
+				}}
+			>
 				<Body>
 					<div
-						style={{ 
-							color: 'white', 
-							border: '3px solid #6A00FF', 
-							borderRadius: '12px' 
+						style={{
+							color: 'white',
+							border: '2px solid #6A00FF',
+							backgroundColor: '#6A00FF',
+							paddingBottom: '6px',
+							paddingLeft: '6px',
+							paddingRight: '6px',
+							justifyContent: 'center',
+							borderRadius: '16px'
 						}}
 					>
 						<FormHeader>
 							<Flex>
-							<Spacer />
+								<Spacer />
 								{/* <Box>Chain</Box> */}
 								{/* <Spacer />
 								<Tooltip content="Redirect requests through the SoulSwap Server to hide your IP address">
@@ -1013,10 +1038,10 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 							</Flex>
 						</FormHeader>
 
-						<ReactSelect 
-							options={chains} 
-							value={selectedChain} 
-							onChange={onChainChange} 
+						<ReactSelect
+							options={chains}
+							value={selectedChain}
+							onChange={onChainChange}
 						/>
 					</div>
 					<Flex flexDir="column" gap="4px" pos="relative">
@@ -1107,14 +1132,14 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 
 					<SwapWrapper>
 						{!isConnected ? (
-							<button 
+							<button
 								style={{
 									display: "flex",
 									justifyContent: "center",
 									alignItems: "center",
 									height: "40px",
 									width: "100%",
-									border: "2px solid",
+									border: "2px solid #A171FB",
 									borderRadius: "8px",
 									marginBottom: '20px',
 									backgroundColor: "#6A00FF"
@@ -1124,24 +1149,24 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 								Connect Wallet
 							</button>
 						) : !isValidSelectedChain ? (
-							<button 
-							style={{
-								display: "flex",
-								justifyContent: "center",
-								alignItems: "center",
-								height: "40px",
-								width: "100%",
-								border: "2px solid",
-								borderRadius: "8px",
-								marginBottom: '20px',
-								backgroundColor: "#6A00FF"
-							}}
+							<button
+								style={{
+									display: "flex",
+									justifyContent: "center",
+									alignItems: "center",
+									height: "40px",
+									width: "100%",
+									border: "2px solid #A171FB",
+									borderRadius: "8px",
+									marginBottom: '20px',
+									backgroundColor: "#6A00FF"
+								}}
 								onClick={() => switchNetwork(selectedChain.id)}
 							>
 								Switch Network
 							</button>
 						) : insufficientBalance ? (
-							<button 
+							<button
 								style={{
 									display: "flex",
 									justifyContent: "center",
@@ -1157,35 +1182,35 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 								Insufficient Balance
 							</button>
 						) : !selectedRoute && isSmallScreen && finalSelectedFromToken && finalSelectedToToken ? (
-							<button 
-							style={{
-								display: "flex",
-								justifyContent: "center",
-								alignItems: "center",
-								height: "40px",
-								width: "100%",
-								border: "2px solid",
-								borderRadius: "8px",
-								marginBottom: '20px',
-								backgroundColor: "#6A00FF"
-							}}
+							<button
+								style={{
+									display: "flex",
+									justifyContent: "center",
+									alignItems: "center",
+									height: "40px",
+									width: "100%",
+									border: "2px solid #A171FB",
+									borderRadius: "8px",
+									marginBottom: '20px',
+									backgroundColor: "#6A00FF"
+								}}
 								onClick={() => setUiState(STATES.ROUTES)}
 							>
 								Select Aggregator
 							</button>
 						) : hasMaxPriceImpact && !isDegenModeEnabled ? (
-							<button 
-							style={{
-								display: "flex",
-								justifyContent: "center",
-								alignItems: "center",
-								height: "40px",
-								width: "100%",
-								border: "2px solid",
-								borderRadius: "8px",
-								marginBottom: '20px',
-								backgroundColor: "#e74042"
-							}} 
+							<button
+								style={{
+									display: "flex",
+									justifyContent: "center",
+									alignItems: "center",
+									height: "40px",
+									width: "100%",
+									border: "2px solid",
+									borderRadius: "8px",
+									marginBottom: '20px',
+									backgroundColor: "#e74042"
+								}}
 								disabled
 							>
 								Price Impact Too Large
@@ -1198,13 +1223,12 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 											{isUSDTNotApprovedOnEthereum && (
 												<Flex flexDir="column" gap="4px" w="100%">
 													<Text fontSize="0.75rem" fontWeight={400}>
-														{`${
-															finalSelectedFromToken?.symbol
-														} uses an old token implementation that requires resetting approvals if there's a
+														{`${finalSelectedFromToken?.symbol
+															} uses an old token implementation that requires resetting approvals if there's a
 														previous approval, and you currently have an approval for ${(
-															Number(allowance) /
-															10 ** finalSelectedFromToken?.decimals
-														).toFixed(2)} ${finalSelectedFromToken?.symbol} for this contract, you
+																Number(allowance) /
+																10 ** finalSelectedFromToken?.decimals
+															).toFixed(2)} ${finalSelectedFromToken?.symbol} for this contract, you
 														need to reset your approval and approve again`}
 													</Text>
 													<Button
@@ -1239,7 +1263,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 														alignItems: "center",
 														height: "40px",
 														width: "100%",
-														border: "2px solid",
+														border: "2px solid #A171FB",
 														borderRadius: "8px",
 														marginBottom: '20px',
 														backgroundColor: "#6A00FF"
@@ -1274,10 +1298,10 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 													{!selectedRoute
 														? 'Select Aggregator'
 														: isApproved
-														? `Swap via ${selectedRoute.name}`
-														: slippageIsWorng
-														? 'Set Slippage'
-														: 'Approve'
+															? `Swap via ${selectedRoute.name}`
+															: slippageIsWorng
+																? 'Set Slippage'
+																: 'Approve'
 													}
 
 												</button>
@@ -1319,10 +1343,10 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 								)}
 							</>
 						)}
-					<Routes ref={routesRef} visible={true
-						// uiState === STATES.ROUTES
+						<Routes ref={routesRef} visible={true
+							// uiState === STATES.ROUTES
 						}>
-					{/* <ArrowBackIcon
+							{/* <ArrowBackIcon
 						width={'24px'}
 						height="24px"
 						position={'absolute'}
@@ -1331,245 +1355,246 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 						display={['flex', 'flex', 'none', 'none']}
 						cursor="pointer"
 					/> */}
-					{normalizedRoutes?.length ? (
-						<Flex alignItems="center" justifyContent="space-between">
-							<FormHeader> Choose Route </FormHeader>
-							<Tooltip2
-								content={`Displayed data will auto-refresh after ${secondsToRefresh} seconds. Click here to update manually`}
-							>
-								{/* <RepeatIcon 
+							{normalizedRoutes?.length ? (
+								<Flex alignItems="center" justifyContent="space-between">
+									<FormHeader> Choose Route </FormHeader>
+									<Tooltip2
+										content={`Displayed data will auto-refresh after ${secondsToRefresh} seconds. Click here to update manually`}
+									>
+										{/* <RepeatIcon 
 									pos="absolute" w="16px" 
 									h="16px" mt="4px" ml="4px" 
 									color={"white"}
 								/> */}
-								<CircularProgress
-									value={100 - (secondsToRefresh / (REFETCH_INTERVAL / 1000)) * 100}
-									color="#A171FB"
-									onClick={refetch}
-									size="24px"
-									as="button"
-								/>
-							</Tooltip2>
-						</Flex>
-					) : !isLoading &&
-					  amount &&
-					  debouncedAmount &&
-					  amount === debouncedAmount &&
-					  finalSelectedFromToken &&
-					  finalSelectedToToken &&
-					  routes &&
-					  routes.length ? (
-						<FormHeader>No Routes Found...</FormHeader>
-					) : null}
-					<Box display={{ base: 'none', md: 'block', lg: 'block' }}>
-						<span style={{ fontSize: '12px', color: '#A171FB', marginLeft: '4px', marginTop: '4px', display: 'flex', 
-						justifyContent: 'left' }}
-						>
-							{normalizedRoutes?.length ? `Best route is selected based on net output after gas fees.` : null}
-						</span>
-
-						<span style={{ fontSize: '12px', color: '#999999', marginLeft: '4px', marginTop: '4px', display: 'flex' }}>
-							{failedRoutes.length > 0
-								? `Routes for aggregators ${failedRoutes
-										.map((r) => r.name)
-										.join(', ')} have been hidden since they could not be executed`
-								: null}
-						</span>
-					</Box>
-
-					{isLoading &&
-					(debouncedAmount || debouncedAmountOut) &&
-					finalSelectedFromToken &&
-					finalSelectedToToken &&
-					!(disabledAdapters.length === adaptersNames.length) ? (
-						<Loader />
-					) : (!debouncedAmount && !debouncedAmountOut) ||
-					  !finalSelectedFromToken ||
-					  !finalSelectedToToken ||
-					  !router.isReady ||
-					  disabledAdapters.length === adaptersNames.length ? (
-						<RoutesPreview />
-					) : null}
-
-					{normalizedRoutes.map((r, i) => (
-						<Fragment
-							key={
-								selectedChain.label +
-								finalSelectedFromToken.label +
-								finalSelectedToToken.label +
-								amountWithDecimals +
-								gasPriceData?.formatted?.gasPrice +
-								r?.name
-							}
-						>
-							<SwapRoute
-								{...r}
-								index={i}
-								selected={aggregator === r.name}
-								setRoute={() => {
-									if (isSmallScreen) toggleUi();
-									setAggregator(r.name);
+										<CircularProgress
+											value={100 - (secondsToRefresh / (REFETCH_INTERVAL / 1000)) * 100}
+											color="#A171FB"
+											onClick={refetch}
+											size="24px"
+											as="button"
+										/>
+									</Tooltip2>
+								</Flex>
+							) : !isLoading &&
+								amount &&
+								debouncedAmount &&
+								amount === debouncedAmount &&
+								finalSelectedFromToken &&
+								finalSelectedToToken &&
+								routes &&
+								routes.length ? (
+								<FormHeader>No Routes Found...</FormHeader>
+							) : null}
+							<Box display={{ base: 'none', md: 'block', lg: 'block' }}>
+								<span style={{
+									fontSize: '12px', color: '#A171FB', marginLeft: '4px', marginTop: '4px', display: 'flex',
+									justifyContent: 'left'
 								}}
-								toToken={finalSelectedToToken}
-								amountFrom={r?.fromAmount}
-								fromToken={finalSelectedFromToken}
-								selectedChain={selectedChain.label}
-								gasTokenPrice={gasTokenPrice}
-								toTokenPrice={toTokenPrice}
-								isFetchingGasPrice={fetchingTokenPrices}
-								amountOut={amountOutWithDecimals}
-								amountIn={r?.amountIn}
-							/>
+								>
+									{normalizedRoutes?.length ? `Best route is selected based on net output after gas fees.` : null}
+								</span>
 
-							{aggregator === r.name && (
-								<SwapUnderRoute>
-									{!isConnected ? (
-										<ConnectButtonWrapper
-											// style={{
-											// 	border: '1px solid #FFFFFF'
-											// }}
-										>
-											<ConnectButton />
-										</ConnectButtonWrapper>
-									) : !isValidSelectedChain ? (
-										<Button colorScheme={'purple'} onClick={() => switchNetwork(selectedChain.id)}>
-											Switch Network
-										</Button>
-									) : (
-										<>
-											{router && address && (
-												<>
-													<>
-														{isUSDTNotApprovedOnEthereum && (
-															<Flex flexDir="column" gap="4px" w="100%">
-																<Text fontSize="0.75rem" fontWeight={400}>
-																	{`${
-																		finalSelectedFromToken?.symbol
-																	} uses an old token implementation that requires resetting approvals if there's a
-																		previous approval, and you currently have an approval for ${(
-																			Number(allowance) /
-																			10 ** finalSelectedFromToken?.decimals
-																		).toFixed(2)} ${finalSelectedFromToken?.symbol} for this contract, you
-																		need to reset your approval and approve again`}
-																</Text>
-																<Button
-																	isLoading={isApproveResetLoading}
-																	loadingText={isConfirmingResetApproval ? 'Confirming' : 'Preparing transaction'}
-																	colorScheme={'purple'}
-																	onClick={() => {
-																		if (approveReset) approveReset();
-																	}}
-																	disabled={isApproveResetLoading || !selectedRoute}
-																>
-																	Reset Approval
-																</Button>
-															</Flex>
-														)}
+								<span style={{ fontSize: '12px', color: '#999999', marginLeft: '4px', marginTop: '4px', display: 'flex' }}>
+									{failedRoutes.length > 0
+										? `Routes for aggregators ${failedRoutes
+											.map((r) => r.name)
+											.join(', ')} have been hidden since they could not be executed`
+										: null}
+								</span>
+							</Box>
 
-														{(hasPriceImapct || isUnknownPrice) && !isLoading && selectedRoute && isApproved ? (
-															<SwapConfirmation
-																isUnknownPrice={isUnknownPrice}
-																handleSwap={handleSwap}
-																isMaxPriceImpact={hasMaxPriceImpact}
-															/>
-														) : (
-															<button
-																// isLoading={swapMutation.isLoading || isApproveLoading}
-																// loadingText={isConfirmingApproval ? 'Confirming' : 'Preparing transaction'}
-																// colorScheme={'purple'}
-																style={{
-																	display: "flex",
-																	justifyContent: "center",
-																	alignItems: "center",
-																	height: "40px",
-																	width: "100%",
-																	border: "2px solid",
-																	borderRadius: "8px",
-																	marginBottom: '20px',
-																	backgroundColor: "#6A00FF"
-																}}
-																onClick={() => {
-																	if (approve) approve();
+							{isLoading &&
+								(debouncedAmount || debouncedAmountOut) &&
+								finalSelectedFromToken &&
+								finalSelectedToToken &&
+								!(disabledAdapters.length === adaptersNames.length) ? (
+								<Loader />
+							) : (!debouncedAmount && !debouncedAmountOut) ||
+								!finalSelectedFromToken ||
+								!finalSelectedToToken ||
+								!router.isReady ||
+								disabledAdapters.length === adaptersNames.length ? (
+								<RoutesPreview />
+							) : null}
 
-																	if (
-																		balance.data &&
-																		!Number.isNaN(Number(balance.data.formatted)) &&
-																		+selectedRoute.amountIn > +balance.data.formatted
-																	)
-																		return;
-
-																	if (isApproved) handleSwap();
-																}}
-																disabled={
-																	isUSDTNotApprovedOnEthereum ||
-																	swapMutation.isLoading ||
-																	isApproveLoading ||
-																	isApproveResetLoading ||
-																	!selectedRoute ||
-																	slippageIsWorng ||
-																	!isAmountSynced
-																}
-															>
-																{!selectedRoute
-																	? 'Select Aggregator'
-																	: isApproved
-																	? `Swap via ${selectedRoute?.name}`
-																	: slippageIsWorng
-																	? 'Set Slippage'
-																	: 'Approve'}
-															</button>
-														)}
-
-														{!isApproved && selectedRoute && inifiniteApprovalAllowed.includes(selectedRoute.name) && (
-															<Button
-																colorScheme={'purple'}
-																loadingText={isConfirmingInfiniteApproval ? 'Confirming...' : 'Preparing...'}
-																isLoading={isApproveInfiniteLoading}
-																onClick={() => {
-																	if (approveInfinite) approveInfinite();
-																}}
-																disabled={
-																	isUSDTNotApprovedOnEthereum ||
-																	swapMutation.isLoading ||
-																	isApproveLoading ||
-																	isApproveResetLoading ||
-																	isApproveInfiniteLoading ||
-																	!selectedRoute
-																}
-															>
-																{'Approve Infinite'}
-															</Button>
-														)}
-													</>
-												</>
-											)}
-										</>
-									)}
-								</SwapUnderRoute>
-							)}
-						</Fragment>
-					))}
-
-					{normalizedRoutes.length > 0
-						? loadingRoutes.map((r) => (
+							{normalizedRoutes.map((r, i) => (
 								<Fragment
 									key={
-										'fetching quote' +
-										selectedChain?.label +
-										finalSelectedFromToken?.label +
-										finalSelectedToToken?.label +
+										selectedChain.label +
+										finalSelectedFromToken.label +
+										finalSelectedToToken.label +
 										amountWithDecimals +
 										gasPriceData?.formatted?.gasPrice +
-										r[0]
+										r?.name
 									}
 								>
-									<LoadingRoute name={r[0] as string} />
+									<SwapRoute
+										{...r}
+										index={i}
+										selected={aggregator === r.name}
+										setRoute={() => {
+											if (isSmallScreen) toggleUi();
+											setAggregator(r.name);
+										}}
+										toToken={finalSelectedToToken}
+										amountFrom={r?.fromAmount}
+										fromToken={finalSelectedFromToken}
+										selectedChain={selectedChain.label}
+										gasTokenPrice={gasTokenPrice}
+										toTokenPrice={toTokenPrice}
+										isFetchingGasPrice={fetchingTokenPrices}
+										amountOut={amountOutWithDecimals}
+										amountIn={r?.amountIn}
+									/>
+
+									{aggregator === r.name && (
+										<SwapUnderRoute>
+											{!isConnected ? (
+												<ConnectButtonWrapper
+												// style={{
+												// 	border: '1px solid #FFFFFF'
+												// }}
+												>
+													<ConnectButton />
+												</ConnectButtonWrapper>
+											) : !isValidSelectedChain ? (
+												<Button colorScheme={'purple'} onClick={() => switchNetwork(selectedChain.id)}>
+													Switch Network
+												</Button>
+											) : (
+												<>
+													{router && address && (
+														<>
+															<>
+																{isUSDTNotApprovedOnEthereum && (
+																	<Flex flexDir="column" gap="4px" w="100%">
+																		<Text fontSize="0.75rem" fontWeight={400}>
+																			{`${finalSelectedFromToken?.symbol
+																				} uses an old token implementation that requires resetting approvals if there's a
+																		previous approval, and you currently have an approval for ${(
+																					Number(allowance) /
+																					10 ** finalSelectedFromToken?.decimals
+																				).toFixed(2)} ${finalSelectedFromToken?.symbol} for this contract, you
+																		need to reset your approval and approve again`}
+																		</Text>
+																		<Button
+																			isLoading={isApproveResetLoading}
+																			loadingText={isConfirmingResetApproval ? 'Confirming' : 'Preparing transaction'}
+																			colorScheme={'purple'}
+																			onClick={() => {
+																				if (approveReset) approveReset();
+																			}}
+																			disabled={isApproveResetLoading || !selectedRoute}
+																		>
+																			Reset Approval
+																		</Button>
+																	</Flex>
+																)}
+
+																{(hasPriceImapct || isUnknownPrice) && !isLoading && selectedRoute && isApproved ? (
+																	<SwapConfirmation
+																		isUnknownPrice={isUnknownPrice}
+																		handleSwap={handleSwap}
+																		isMaxPriceImpact={hasMaxPriceImpact}
+																	/>
+																) : (
+																	<button
+																		// isLoading={swapMutation.isLoading || isApproveLoading}
+																		// loadingText={isConfirmingApproval ? 'Confirming' : 'Preparing transaction'}
+																		// colorScheme={'purple'}
+																		style={{
+																			display: "flex",
+																			justifyContent: "center",
+																			alignItems: "center",
+																			height: "40px",
+																			width: "100%",
+																			border: "2px solid #A171FB",
+																			borderRadius: "8px",
+																			marginBottom: '20px',
+																			backgroundColor: "#6A00FF"
+																		}}
+																		onClick={() => {
+																			if (approve) approve();
+
+																			if (
+																				balance.data &&
+																				!Number.isNaN(Number(balance.data.formatted)) &&
+																				+selectedRoute.amountIn > +balance.data.formatted
+																			)
+																				return;
+
+																			if (isApproved) handleSwap();
+																		}}
+																		disabled={
+																			isUSDTNotApprovedOnEthereum ||
+																			swapMutation.isLoading ||
+																			isApproveLoading ||
+																			isApproveResetLoading ||
+																			!selectedRoute ||
+																			slippageIsWorng ||
+																			!isAmountSynced
+																		}
+																	>
+																		{!selectedRoute
+																			? 'Select Aggregator'
+																			: isApproved
+																				? `Swap via ${selectedRoute?.name}`
+																				: slippageIsWorng
+																					? 'Set Slippage'
+																					: 'Approve'}
+																	</button>
+																)}
+
+																{!isApproved && selectedRoute && inifiniteApprovalAllowed.includes(selectedRoute.name) && (
+																	<Button
+																		colorScheme={'purple'}
+																		loadingText={isConfirmingInfiniteApproval ? 'Confirming...' : 'Preparing...'}
+																		isLoading={isApproveInfiniteLoading}
+																		onClick={() => {
+																			if (approveInfinite) approveInfinite();
+																		}}
+																		disabled={
+																			isUSDTNotApprovedOnEthereum ||
+																			swapMutation.isLoading ||
+																			isApproveLoading ||
+																			isApproveResetLoading ||
+																			isApproveInfiniteLoading ||
+																			!selectedRoute
+																		}
+																	>
+																		{'Approve Infinite'}
+																	</Button>
+																)}
+															</>
+														</>
+													)}
+												</>
+											)}
+										</SwapUnderRoute>
+									)}
 								</Fragment>
-						  ))
-						: null}
-				</Routes>
-				</SwapWrapper>
-				</Body>				
+							))}
+
+							{normalizedRoutes.length > 0
+								? loadingRoutes.map((r) => (
+									<Fragment
+										key={
+											'fetching quote' +
+											selectedChain?.label +
+											finalSelectedFromToken?.label +
+											finalSelectedToToken?.label +
+											amountWithDecimals +
+											gasPriceData?.formatted?.gasPrice +
+											r[0]
+										}
+									>
+										<LoadingRoute name={r[0] as string} />
+									</Fragment>
+								))
+								: null}
+						</Routes>
+					</SwapWrapper>
+				</Body>
 			</BodyWrapper>
 
 			{/* {window === parent ? <FAQs /> : null} */}

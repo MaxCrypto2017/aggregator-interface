@@ -34,7 +34,8 @@ const theme = (darkMode) => ({
 	bg7: darkMode ? getStyle('bg7', 'rgba(7,14,15,0.7)') : 'rgba(252,252,251,1)',
 
 	//specialty colors
-	background: darkMode ? getStyle('background', '#22242A') : '#ffffff',
+	// background: darkMode ? getStyle('background', '#22242A') : '#ffffff',
+	background: darkMode ? getStyle('background', '#13131B') : '#ffffff',
 	advancedBG: darkMode ? getStyle('advancedBG', 'rgba(0,0,0,0.1)') : 'rgba(255,255,255,0.4)',
 	divider: darkMode ? getStyle('divider', 'rgba(43, 43, 43, 0.435)') : 'rgba(43, 43, 43, 0.035)',
 

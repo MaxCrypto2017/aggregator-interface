@@ -22,7 +22,7 @@ const Connect = ({ tokenList = null, tokensUrlMap = {}, tokensSymbolsMap = {} })
 					alignItems: "center",
 					height: "40px",
 					width: "196px",
-					border: "2px solid",
+					border: "2px solid #A171FB",
 					borderRadius: "8px",
 					marginBottom: '20px',
 					backgroundColor: "#6a00ff"

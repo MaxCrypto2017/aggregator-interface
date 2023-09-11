@@ -47,7 +47,7 @@ const SwapConfirmation = ({
 							alignItems: "center",
 							height: "40px",
 							width: "100%",
-							border: "2px solid #a171fb",
+							border: "2px solid #A171FB",
 							borderRadius: "8px",
 							marginBottom: '20px',
 							backgroundColor: "#6a00ff"

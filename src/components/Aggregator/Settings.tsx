@@ -84,7 +84,7 @@ export const Settings = ({ adapters, disabledAdapters, setDisabledAdapters, onCl
 								alignItems: "center",
 								height: "40px",
 								width: "100%",
-								border: "2px solid",
+								border: "2px solid #A171FB",
 								borderRadius: "8px",
 								marginBottom: '20px',
 								backgroundColor: "#6A00FF"

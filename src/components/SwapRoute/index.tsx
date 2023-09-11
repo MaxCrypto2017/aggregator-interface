@@ -78,7 +78,7 @@ const Route = ({
 			? `$${formattedNum(netOut.toFixed(1), true)}`
 			: null;
 	const isGasNotKnown = gasUsd === 'Unknown' || Number.isNaN(Number(gasUsd));
-	const txGas = isGasNotKnown ? '' : '$' + formattedNum(gasUsd);
+	const txGas = isGasNotKnown ? '' : '$' + formattedNum(Number(gasUsd).toFixed(2));
 
 	const inputAmount = amountOut !== '0' && fromToken?.decimals && amountFrom && amountFrom !== '0' ? amountIn : null;
 	return (
@@ -87,7 +87,7 @@ const Route = ({
 			className={selected ? 'RouteWrapper is-selected' : 'RouteWrapper'}
 			selected={selected}
 			best={index === 0}
-			style={{ 
+			style={{
 				// background: selected ? "#A171FB" : "#2d3039",
 				border: selected ? "2px solid #A171FB" : "1px solid #2d3039",
 			}}
@@ -115,11 +115,11 @@ const Route = ({
 				<Text fontWeight={500} fontSize={16} color={'#FAFAFA'}>
 					<Flex as="span" alignItems="center" gap="8px">
 						{index === 0 ? (
-							<Text as="span" color="#059669" fontSize={14} fontWeight={700}>
+							<Text as="span" color="#40e566" fontSize={14} fontWeight={700}>
 								BEST
 							</Text>
 						) : Number.isFinite(lossPercent) ? (
-							<Text as="span" color="red.600" fontSize={12}>
+							<Text as="span" color="#e84141" fontSize={12}>
 								-{Math.abs(100 - lossPercent * 100).toFixed(2)}%
 							</Text>
 						) : null}
@@ -167,24 +167,37 @@ const Route = ({
 								</Text>
 							</Tooltip>
 						) : (
-							<Text as="span" display="flex" alignItems="center" gap="4px" fontWeight={500}>
+							<Text 
+								as="span" 
+								display="flex" alignItems="center" 
+								gap="4px" 
+								fontWeight={500}
+								style={{
+									color: "#40e566",
+								}}
+							>
 								{isGasNotKnown ? null : <GasIcon />}
 								{txGas}
 							</Text>
 						)}
-						<Text display="flex" gap="3px">
+						<Text
+							display="flex" gap="3px"
+							style={{
+								color: "#A171FB",
+							}}
+						>
 							via
 							{isApproved ? (
 								<Tooltip content="Token is approved for this aggregator.">
-									<Unlock size={14} color="#059669" />
+									<Unlock size={14} color="#40e566" />
 								</Tooltip>
 							) : (
 								' '
 							)}
-							{name}
+								{name}
 							{price.isMEVSafe === true ? (
 								<Tooltip content="This aggregator protects from MEV.">
-									<ZapOff size={14} color="#059669" />
+									<ZapOff size={14} color="#40e566" />
 								</Tooltip>
 							) : null}
 						</Text>

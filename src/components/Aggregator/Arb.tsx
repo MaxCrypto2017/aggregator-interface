@@ -899,6 +899,22 @@ export function AggregatorContainer() {
 
 						{!isConnected ? (
 							<>
+							<button
+								style={{
+									display: "flex",
+									justifyContent: "center",
+									alignItems: "center",
+									height: "40px",
+									width: "100%",
+									border: "2px solid #A171FB",
+									borderRadius: "8px",
+									marginBottom: '20px',
+									backgroundColor: "#6A00FF"
+								}}
+								onClick={openConnectModal}
+							>
+								Connect Wallet
+							</button>
 								<Button
 									colorScheme={'purple'}
 									loadingText={isConfirmingApproval ? 'Confirming' : 'Preparing transaction'}
@@ -1155,7 +1171,7 @@ export function AggregatorContainer() {
 								alignItems: "center",
 								height: "40px",
 								width: "100%",
-								border: "2px solid",
+								border: "2px solid #A171FB",
 								borderRadius: "8px",
 								marginBottom: '20px',
 								backgroundColor: "#6A00FF"
@@ -1172,7 +1188,7 @@ export function AggregatorContainer() {
 									alignItems: "center",
 									height: "40px",
 									width: "100%",
-									border: "2px solid",
+									border: "2px solid #A171FB",
 									borderRadius: "8px",
 									marginBottom: '20px',
 									backgroundColor: "#6A00FF"
@@ -1213,7 +1229,7 @@ export function AggregatorContainer() {
 							}}
 							disabled
 							>
-								Price impact is too large
+								Price impact is too large.
 							</button>
 						) : (
 							<>
