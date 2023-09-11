@@ -126,7 +126,7 @@ const Body = styled.div`
 	gap: 16px;
 	padding: 16px;
 	width: 100%;
-	max-width: 30rem;
+	max-width: 50rem;
 	border: 1px solid #2f333c;
 	align-self: flex-start;
 	z-index: 1;
@@ -186,7 +186,7 @@ const Routes = styled.div<{ visible: boolean }>`
 	min-height: 100%;
 	overflow-x: hidden;
 	align-self: stretch;
-	max-width: 30rem;
+	max-width: 50rem;
 	border: 1px solid #2f333c;
 
 	& > *:first-child {
@@ -1073,8 +1073,8 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 							icon={<ArrowDown size={14} />}
 							aria-label="Switch Tokens"
 							marginTop="auto"
-							w="2.25rem"
-							h="2.25rem"
+							w="1.85rem"
+							h="1.85rem"
 							minW={0}
 							p="0"
 							pos="absolute"
@@ -1083,7 +1083,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 							right="0"
 							left="0"
 							m="auto"
-							borderRadius="8px"
+							borderRadius="12px"
 							bg="#222429"
 							_hover={{ bg: '#2d3037' }}
 							color="white"
@@ -1357,9 +1357,9 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 					/> */}
 							{normalizedRoutes?.length ? (
 								<Flex alignItems="center" justifyContent="space-between">
-									<FormHeader> Choose Route </FormHeader>
+									<FormHeader style={{ fontSize: 21 }}> Choose Route </FormHeader>
 									<Tooltip2
-										content={`Displayed data will auto-refresh after ${secondsToRefresh} seconds. Click here to update manually`}
+										content={`Displayed data will auto-refresh after ${secondsToRefresh} seconds. Click here to update manually.`}
 									>
 										{/* <RepeatIcon 
 									pos="absolute" w="16px" 
@@ -1385,7 +1385,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 								routes.length ? (
 								<FormHeader>No Routes Found...</FormHeader>
 							) : null}
-							<Box display={{ base: 'none', md: 'block', lg: 'block' }}>
+							{/* <Box display={{ base: 'none', md: 'block', lg: 'block' }}>
 								<span style={{
 									fontSize: '12px', color: '#A171FB', marginLeft: '4px', marginTop: '4px', display: 'flex',
 									justifyContent: 'left'
@@ -1401,7 +1401,7 @@ export function AggregatorContainer({ tokenList, sandwichList }) {
 											.join(', ')} have been hidden since they could not be executed`
 										: null}
 								</span>
-							</Box>
+							</Box> */}
 
 							{isLoading &&
 								(debouncedAmount || debouncedAmountOut) &&

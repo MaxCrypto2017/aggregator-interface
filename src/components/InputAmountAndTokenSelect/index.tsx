@@ -58,8 +58,8 @@ export function InputAmountAndTokenSelect({
 			color="white"
 			borderRadius="12px"
 			p={['8px', '8px', '16px', '16px']}
-			border="1px solid transparent"
-			_focusWithin={{ border: '1px solid white' }}
+			border="2px solid transparent"
+			_focusWithin={{ border: '2px solid #6A00FF' }}
 		>
 			{/* <Text fontSize="0.875rem" fontWeight={400} color="#a2a2a2" whiteSpace="nowrap" minH="1.375rem">
 				{type === 'amountIn' ? 'You sell' : 'You buy'}
@@ -98,7 +98,12 @@ export function InputAmountAndTokenSelect({
 				{customSelect ? (
 					customSelect
 				) : (
-					<TokenSelect tokens={tokens} token={token} onClick={onSelectTokenChange} selectedChain={selectedChain} />
+					<TokenSelect 
+						tokens={tokens} 
+						token={token} 
+						onClick={onSelectTokenChange} 
+						selectedChain={selectedChain} 
+					/>
 				)}
 			</Flex>
 
@@ -133,10 +138,6 @@ export function InputAmountAndTokenSelect({
 				<Flex alignItems="center" justifyContent="flex-start" flexWrap="nowrap" gap="8px">
 					{balance && (
 						<>
-							<Text fontSize="0.875rem" fontWeight={300} color="#a2a2a2">{`Balance: ${Number(balance).toFixed(
-								4
-							)}`}</Text>
-
 							{onMaxClick && (
 								<Button
 									onClick={onMaxClick}
@@ -150,7 +151,12 @@ export function InputAmountAndTokenSelect({
 									fontWeight={500}
 									color="#1f72e5"
 								>
-									Max
+									{/* MAX */}
+									<Text 
+										fontSize="0.875rem" 
+										fontWeight={600} color="#a2a2a2">{`${Number(balance).toFixed(
+								4
+							)}`}</Text>
 								</Button>
 							)}
 						</>

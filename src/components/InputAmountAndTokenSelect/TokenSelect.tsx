@@ -299,14 +299,20 @@ export const TokenSelect = ({ tokens, onClick, token, selectedChain }) => {
 		<>
 			<Button
 				display="flex"
+				flexFlow="column flex-wrap"
+				// justifyContent={'space-between'}
 				gap="6px"
 				flexWrap="nowrap"
 				alignItems="center"
 				w="100%"
-				borderRadius="8px"
+				// w="12rem"
+				borderRadius="24px"
+				border="4px solid #6A00FF"
 				bg="#222429"
 				_hover={{ bg: '#2d3037' }}
-				maxW={{ base: '128px', md: '9rem' }}
+				maxW={{ base: '124px', md: '12rem' }}
+				position={'absolute'}
+				right="0px"
 				p="12px"
 				onClick={() => onOpen()}
 			>
@@ -326,11 +332,11 @@ export const TokenSelect = ({ tokens, onClick, token, selectedChain }) => {
 					{token?.isMultichain ? <WarningTwoIcon color={'orange.200'} /> : <></>}
 				</Tooltip>
 
-				<Text as="span" color="white" overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis" fontWeight={400}>
-					{token ? token.symbol : 'Select Token'}
+				<Text as="span" color="white" overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis" fontWeight={800}>
+					{token ? `${token.symbol}` : 'Select Token'}
 				</Text>
 
-				<ChevronDown size={16} style={{ marginLeft: 'auto' }} />
+				<ChevronDown size={12} style={{ marginLeft: 'auto' }} />
 			</Button>
 			{isOpen ? (
 				<SelectModal

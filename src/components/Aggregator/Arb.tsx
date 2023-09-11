@@ -1082,8 +1082,8 @@ export function AggregatorContainer() {
 							icon={<ArrowDown size={14} />}
 							aria-label="Switch Tokens"
 							marginTop="auto"
-							w="2.25rem"
-							h="2.25rem"
+							w="1.85rem"
+							h="1.85rem"
 							minW={0}
 							p="0"
 							pos="absolute"
@@ -1092,7 +1092,7 @@ export function AggregatorContainer() {
 							right="0"
 							left="0"
 							m="auto"
-							borderRadius="8px"
+							borderRadius="12px"
 							bg="#222429"
 							_hover={{ bg: '#2d3037' }}
 							color="white"
