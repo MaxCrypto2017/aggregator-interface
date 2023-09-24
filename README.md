@@ -2,8 +2,6 @@
 
 If you wish to report an issue, please join our [Discord](https://discord.gg/SoulSwap)
 
-If you want to learn, read the [Twitter Thread](https://twitter.com/DefiLlama/status/1609989799653285888)
-
 ### Integration
 
 The best way to integrate is through an iframe of our page, like this:
@@ -12,7 +10,7 @@ The best way to integrate is through an iframe of our page, like this:
 <iframe
 	title="SoulSwap Widget"
 	name="SoulSwap Widget"
-	src="llamaswap-interface.vercel.app?chain=ethereum"
+	src="meta.soulswap.finance?chain=ethereum"
 	width="450px"
 	height="565px"
 	allow="fullscreen"
@@ -37,11 +35,9 @@ Note: only tokens that are part of our token lists are accepted in `from` and `t
 
 Widget integrations are preferred cause:
 
-- Our widget handles all different dex integrations, which are quite different (cowswap requires signing a message while most others send a tx onchain)
-- Our widget shows warnings for price impact and other things that could impact negatively your users
-- In case there's any issue we can push a fix to everybody by just updating the site behind the iframe
-
-But if you'd prefer to instead integrate through our API please contact @0xngmi on discord through defillama's discord and ask for an api key. We are forced to use api keys because many of the underlying aggregators have rate limits, so we have to control the volume of requests we send to them.
+- Our widget handles all different dex integrations, which are quite different (cowswap requires signing a message while most others send a tx onchain).
+- Our widget shows warnings for price impact and other things that could impact negatively your users.
+- In case there's any issue we can push a fix to everybody by just updating the site behind the iframe.
 
 ### Running the app locally
 
