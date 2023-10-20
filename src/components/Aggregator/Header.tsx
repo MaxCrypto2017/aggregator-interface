@@ -35,7 +35,7 @@ const Header = ({ children }) => {
 				fontSize={['26px', '26px', '32px', '32px']}
 				display="flex"
 				alignItems="center"
-				onClick={() => window.open('https://llamaswap-interface.vercel.app/')}
+				onClick={() => window.open('https://meta.soulswap.finance/')}
 				cursor="pointer"
 			>
 				<Image
